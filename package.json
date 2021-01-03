@@ -1,6 +1,6 @@
 {
   "name": "webdriverio-cucumber-steps",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Cucumber steps (step definitions) written with WebdriverIO for end-to-end (e2e) tests",
   "main": "index.js",
   "engines": {
@@ -46,6 +46,5 @@
     "cucumber": ">=5.1.0",
     "webdriverio": ">=6.0.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
