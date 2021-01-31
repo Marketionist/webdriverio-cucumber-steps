@@ -1,0 +1,50 @@
+name: Build and Test
+
+on:
+  # Trigger the workflow on pull request (only for the main branch)
+  # push:
+  #   branches:
+  #     - '**'
+  #   paths-ignore:
+  #     - '**/media/**'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**/media/**'
+
+jobs:  
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-20.04
+        node-version: [10.x, 12.x, 13.x, 14.x]
+
+    steps:
+      - name: Git checkout and install Chrome
+        uses: actions/checkout@v2
+      - run: export CHROME_BIN=/usr/bin/google-chrome
+      # Start XVFB for e2e tests with screen resolution 1280x1024x16
+      - run: "export DISPLAY=:99.0"
+      - run: "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+      # Give XVFB some time to start
+      - run: sleep 3
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y dpkg # To upgrade to dpkg >= 1.17.5ubuntu5.8, which fixes https://bugs.launchpad.net/ubuntu/+source/dpkg/+bug/1730627
+      - run: sudo apt-get install -y libappindicator1 fonts-liberation
+      - run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - run: sudo dpkg -i google-chrome*.deb
+      - run: google-chrome --version
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+        env:
+          CI: true
+      - run: npm test
+        env:
+          CI: true
