@@ -20,7 +20,7 @@ jobs:
       matrix:
         os:
           - ubuntu-20.04
-        node-version: [10.x, 12.x, 13.x, 14.x]
+        node-version: [12.x, 13.x, 14.x]
 
     steps:
       - name: Git checkout and install Chrome
@@ -45,6 +45,15 @@ jobs:
       - run: npm install
         env:
           CI: true
-      - run: npm test
+      - run: npm run test
+        env:
+          CI: true
+      - run: ls -lah tests/logs/
+        env:
+          CI: true
+      - run: cat tests/logs/wdio.log
+        env:
+          CI: true
+      - run: cat tests/logs/wdio-0-0.log
         env:
           CI: true
