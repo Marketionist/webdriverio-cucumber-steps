@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/wdio tests/wdio.conf.js",
+    "test:ci": "./node_modules/.bin/wdio tests/wdio.ci.conf.js",
     "patch": "npm version patch -m \"Bump up package version to %s\" && git push && git push origin --tags && npm publish",
     "minor": "npm version minor -m \"Bump up package version to %s\" && git push && git push origin --tags && npm publish",
     "major": "npm version major -m \"Bump up package version to %s\" && git push && git push origin --tags && npm publish"
