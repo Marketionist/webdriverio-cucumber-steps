@@ -39,6 +39,9 @@ jobs:
       - run: npm install
         env:
           CI: true
+      - run: npm run lint
+        env:
+          CI: true
       - run: npm run test:ci
         env:
           CI: true
@@ -49,5 +52,8 @@ jobs:
         env:
           CI: true
       - run: cat tests/logs/wdio-0-0.log
+        env:
+          CI: true
+      - run: cat tests/logs/wdio-0-1.log
         env:
           CI: true
