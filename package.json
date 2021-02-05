@@ -7,6 +7,7 @@
     "node": ">=12.0.0"
   },
   "scripts": {
+    "lint": "node_modules/.bin/eslint *.js tests/**/*.feature",
     "test": "./node_modules/.bin/wdio tests/wdio.conf.js",
     "test:ci": "./node_modules/.bin/wdio tests/wdio.ci.conf.js",
     "patch": "npm version patch -m \"Bump up package version to %s\" && git push && git push origin --tags && npm publish",
@@ -58,6 +59,8 @@
     "@wdio/selenium-standalone-service": "^6.0.8",
     "@wdio/spec-reporter": "^6.0.8",
     "chromedriver": "^88.0.0",
+    "eslint": "^7.19.0",
+    "eslint-plugin-cucumber": "^1.4.0",
     "node-testing-server": "^1.5.1",
     "wdio-chromedriver-service": "^6.0.3"
   }

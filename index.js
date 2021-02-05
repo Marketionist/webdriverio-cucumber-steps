@@ -1,4 +1,5 @@
 'use strict';
+/* eslint new-cap: 0 */ // --> OFF for Given, When, Then
 
 // #############################################################################
 
@@ -8,7 +9,7 @@ const { Given, When, Then } = require('cucumber');
 
 Given(
     /^(?:I|user) (?:go|goes) to URL "([^"]*)?"$/,
-    async (url) => {
+    async function (url) {
         /**
          * The URL to navigate to
          * @type {String}
@@ -27,7 +28,7 @@ Given(
 
 Then(
     /the title should be "([^"]*)"$/,
-    async (expectedTitle) => {
+    async function (expectedTitle) {
         /**
          * The title of the current browser window
          * @type {String}
