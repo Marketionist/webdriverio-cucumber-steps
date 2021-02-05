@@ -46,7 +46,7 @@ node node_modules/webdriverio-cucumber-steps/utils/prepare.js
 
 Then just see the [list of predefined steps](#list-of-predefined-steps) and
 start writing tests (in `tests/*.feature`) and adding Page Objects
-(in `tests/page-model/*.js`).
+(in `tests/page-objects/*.js`).
 
 Run the tests with:
 ```
