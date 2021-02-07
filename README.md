@@ -1,6 +1,10 @@
 # webdriverio-cucumber-steps
 Cucumber steps (step definitions) written with WebdriverIO for end-to-end (e2e) tests
 
+[![Actions Status](https://github.com/Marketionist/webdriverio-cucumber-steps/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/Marketionist/webdriverio-cucumber-steps/actions)
+[![npm version](https://img.shields.io/npm/v/webdriverio-cucumber-steps.svg)](https://www.npmjs.com/package/webdriverio-cucumber-steps)
+[![NPM License](https://img.shields.io/npm/l/webdriverio-cucumber-steps.svg)](https://github.com/Marketionist/webdriverio-cucumber-steps/blob/main/LICENSE)
+
 ## Supported versions
 <table>
     <thead>
@@ -103,17 +107,17 @@ PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/wdio tests/wdio.
 > You can specify multiple Page Object folders by separating them with commas:
 > `PO_FOLDER_PATH='main/my-custom1,login/my-custom2,auth,create/my-custom3'`
 
-Also you can just add `test-e2e` command to `scripts` in `package.json`:
+Also you can just add `test:e2e` command to `scripts` in `package.json`:
 ```
 {
   // ...
   "scripts": {
-    "test-e2e": "PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/wdio tests/wdio.conf.js",
+    "test:e2e": "PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/wdio tests/wdio.conf.js",
     // ...
 ```
 and then launch tests with:
 ```
-npm run test-e2e
+npm run test:e2e
 ```
 
 ## List of predefined steps
@@ -128,7 +132,7 @@ window/tab equals to the text (provided in "" as a string).
 
 ## Contributing
 You are welcome to contribute to this repository - please see
-[CONTRIBUTING.md](https://github.com/Marketionist/webdriverio-cucumber-steps/blob/master/CONTRIBUTING.md)
+[CONTRIBUTING.md](https://github.com/Marketionist/webdriverio-cucumber-steps/blob/main/CONTRIBUTING.md)
 to help you get started. It is not mandatory, so you can just create a pull
 request and we will help you refine it along the way.
 
