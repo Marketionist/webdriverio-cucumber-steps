@@ -1,7 +1,7 @@
 # webdriverio-cucumber-steps
 Cucumber steps (step definitions) written with WebdriverIO for end-to-end (e2e) tests
 
-[![Actions Status](https://github.com/Marketionist/webdriverio-cucumber-steps/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/Marketionist/webdriverio-cucumber-steps/actions)
+[![Actions Status](https://github.com/Marketionist/webdriverio-cucumber-steps/workflows/Build%20and%20Test/badge.svg)](https://github.com/Marketionist/webdriverio-cucumber-steps/actions)
 [![npm version](https://img.shields.io/npm/v/webdriverio-cucumber-steps.svg)](https://www.npmjs.com/package/webdriverio-cucumber-steps)
 [![NPM License](https://img.shields.io/npm/l/webdriverio-cucumber-steps.svg)](https://github.com/Marketionist/webdriverio-cucumber-steps/blob/main/LICENSE)
 
