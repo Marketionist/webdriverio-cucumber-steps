@@ -55,6 +55,25 @@ async function requirePageObjects () {
 
 requirePageObjects();
 
+/**
+ * Parses cookie
+ * @param {String} cookie name and value separated by "=" (for ex. "test=true")
+ * @returns {Array} array with parsed cookie name and cookie value
+ */
+function parseCookie (cookie) {
+    try {
+        const cookieParsed = cookie.split('=').map((value) => {
+            return value.replace(';', '');
+        });
+
+        return cookieParsed;
+    } catch (error) {
+        throw new Error('Problem with setting cookie for ' +
+            `"${cookie}" - please set it as cookie name and ` +
+            `value separated by "=" (for example "test=1"): ${error}`);
+    }
+}
+
 // #### Given steps ############################################################
 
 Given(
@@ -83,6 +102,67 @@ Given(
     /^(?:I|user) (?:go|goes) to ([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+)(?:| page)$/,
     async function (element, page) {
         await browser.url(pageObjects[page][element]);
+    }
+);
+
+Given(
+    /^(?:I|user) (?:set|sets) cookie "([^"]*)?"$/,
+    async function (cookie) {
+        const cookieParsed = parseCookie(cookie);
+
+        try {
+            await browser.setCookies({
+                name: cookieParsed[0],
+                value: cookieParsed[1]
+                // The below options are optional
+                // path: '/foo', // The cookie path. Defaults to "/"
+                // domain: '.example.com', // The domain the cookie is visible to.
+                // Defaults to the current browsing context’s active document’s URL domain
+                // secure: true, // Whether the cookie is a secure cookie. Defaults to false
+                // httpOnly: true, // Whether the cookie is an HTTP only cookie. Defaults to false
+                // expiry: 1551393875 // When the cookie expires, specified in seconds since Unix Epoch
+            });
+        } catch (error) {
+            throw new Error(`Problem with setting cookie for "${cookie}" ` +
+                '- please set it as cookie name and value separated by "=" ' +
+                `(for example "test=1"): ${error}`);
+        }
+    }
+);
+
+Given(
+    /^(?:I|user) (?:set|sets) cookie "([a-zA-Z0-9_-]+)"."([a-zA-Z0-9_-]+)"$/,
+    async function (page, element) {
+        const cookieParsed = parseCookie(pageObjects[page][element]);
+
+        try {
+            await browser.setCookies({
+                name: cookieParsed[0],
+                value: cookieParsed[1]
+            });
+        } catch (error) {
+            throw new Error('Problem with setting cookie for ' +
+                `"${page}"."${element}" - please set it as cookie name and ` +
+                `value separated by "=" (for example "test=1"): ${error}`);
+        }
+    }
+);
+
+Given(
+    /^(?:I|user) (?:set|sets) cookie ([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+)(?:| page)$/,
+    async function (element, page) {
+        const cookieParsed = parseCookie(pageObjects[page][element]);
+
+        try {
+            await browser.setCookies({
+                name: cookieParsed[0],
+                value: cookieParsed[1]
+            });
+        } catch (error) {
+            throw new Error('Problem with setting cookie for ' +
+                `"${page}"."${element}" - please set it as cookie name and ` +
+                `value separated by "=" (for example "test=1"): ${error}`);
+        }
     }
 );
 
