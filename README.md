@@ -125,9 +125,13 @@ npm run test:e2e
 1. `I/user go(es) to URL "..."` - open a site (by its URL provided in "" as a
 string - for example: `"https://github.com/Marketionist"`) in the current
 browser window/tab.
+2. `I/user go(es) to "..."."..."` - open a site (by its URL provided in
+**"page"."object"**) in the current browser window/tab.
+- `I/user go(es) to ... from ...` - open a site (by its URL provided in
+**object** from **page**) in the current browser window/tab.
 
 ### Then steps
-2. `the title should be "..."` - verify that title of the current browser
+3. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
 
 ## Contributing
