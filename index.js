@@ -72,6 +72,20 @@ Given(
     }
 );
 
+Given(
+    /^(?:I|user) (?:go|goes) to "([a-zA-Z0-9_-]+)"."([a-zA-Z0-9_-]+)"$/,
+    async function (page, element) {
+        await browser.url(pageObjects[page][element]);
+    }
+);
+
+Given(
+    /^(?:I|user) (?:go|goes) to ([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+)(?:| page)$/,
+    async function (element, page) {
+        await browser.url(pageObjects[page][element]);
+    }
+);
+
 // #### When steps #############################################################
 
 // #### Then steps #############################################################
