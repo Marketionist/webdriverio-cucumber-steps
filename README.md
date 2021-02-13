@@ -99,7 +99,7 @@ node_modules/.bin/wdio tests/wdio.conf.js
 
 If you store your Page Objects not in `tests/page-objects` folder, then
 `PO_FOLDER_PATH` environment variable has to be specified to show the path to
-your Page Objects folder:
+your Page Objects folder when running tests:
 ```
 PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/wdio tests/wdio.conf.js
 ```
@@ -125,13 +125,19 @@ npm run test:e2e
 1. `I/user go(es) to URL "..."` - open a site (by its URL provided in "" as a
 string - for example: `"https://github.com/Marketionist"`) in the current
 browser window/tab.
-2. `I/user go(es) to "..."."..."` - open a site (by its URL provided in
-**"page"."object"**) in the current browser window/tab.
-- `I/user go(es) to ... from ...` - open a site (by its URL provided in
-**object** from **page**) in the current browser window/tab.
+2. `I/user go(es) to "..."."..."` - open a site (by its URL provided as a string
+in **"page"."object"**) in the current browser window/tab.
+- `I/user go(es) to ... from ...` - open a site (by its URL provided as a string
+in **object** from **page**) in the current browser window/tab.
+3. `I/user set(s) cookie "..."` - set cookie for the current domain (cookie
+provided in "" as a string - for example: `"my_test_cookie1=11"`).
+- `I/user set(s) cookie "..."."..."` - set cookie for the current domain (cookie
+provided as a string in **"page"."object"**).
+- `I/user set(s) cookie ... from ...` - set cookie for the current domain
+(cookie provided as a string in **object** from **page**).
 
 ### Then steps
-3. `the title should be "..."` - verify that title of the current browser
+4. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
 
 ## Contributing
