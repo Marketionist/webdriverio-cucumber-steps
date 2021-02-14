@@ -135,9 +135,10 @@ provided in "" as a string - for example: `"my_test_cookie1=11"`).
 provided as a string in **"page"."object"**).
 - `I/user set(s) cookie ... from ...` - set cookie for the current domain
 (cookie provided as a string in **object** from **page**).
+4. `I/user print(s) cookies` - output all cookies that are currently set.
 
 ### Then steps
-4. `the title should be "..."` - verify that title of the current browser
+5. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
 
 ## Contributing
