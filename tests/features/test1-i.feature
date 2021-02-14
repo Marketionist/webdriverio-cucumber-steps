@@ -14,3 +14,18 @@ Feature: Running Cucumber with TestCafe - test 'I ...' steps feature 1
   Scenario: 'I go to page' should open corresponding page (text style step)
     Given I go to pageTest1 from test1-page page
     Then the title should be "Test1 Page"
+
+  Scenario: 'I set cookie' should set a cookie on the current page, 'I print cookies' should output current cookies (cookie provided in the step string)
+    Given I go to pageTest1 from test1-page page
+    When I set cookie "my_test_cookie1=11"
+    Then I print cookies
+
+  Scenario: 'I set cookie' should set a cookie on the current page, 'I print cookies' should output current cookies
+    Given I go to pageTest1 from test1-page page
+    When I set cookie "test1-page"."cookieTest"
+    Then I print cookies
+
+  Scenario: 'I set cookie' should set a cookie on the current page, 'I print cookies' should output current cookies (text style step)
+    Given I go to pageTest1 from test1-page page
+    When I set cookie cookieTest from test1-page page
+    Then I print cookies

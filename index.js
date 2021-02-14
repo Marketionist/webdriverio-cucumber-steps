@@ -166,6 +166,15 @@ Given(
     }
 );
 
+Given(
+    /^(?:I|user) (?:print|prints) cookies$/,
+    async function () {
+        const cookies = await browser.getCookies();
+
+        console.log(`Cookies: ${JSON.stringify(cookies, null, spacesToIndent)}`);
+    }
+);
+
 // #### When steps #############################################################
 
 // #### Then steps #############################################################
