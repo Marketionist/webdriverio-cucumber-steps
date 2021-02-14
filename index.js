@@ -4,8 +4,21 @@
 // #############################################################################
 
 const path = require('path');
-const { Given, When, Then } = require('cucumber');
 const { readDirectories, createRequest } = require('js-automation-tools');
+let Given;
+let When;
+let Then;
+
+try {
+    Given = require('cucumber').Given;
+    When = require('cucumber').When;
+    Then = require('cucumber').Then;
+} catch (error) {
+    console.log('Using \'@cucumber/cucumber\'');
+    Given = require('@cucumber/cucumber').Given;
+    When = require('@cucumber/cucumber').When;
+    Then = require('@cucumber/cucumber').Then;
+}
 
 const spacesToIndent = 4;
 
