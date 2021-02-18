@@ -188,6 +188,13 @@ Given(
     }
 );
 
+Given(
+    'I/user send(s) {string} request to {string} with body {string}',
+    async function (method, reqUrl, body) {
+        await createRequest(method, reqUrl, '', body);
+    }
+);
+
 // #### When steps #############################################################
 
 // #### Then steps #############################################################

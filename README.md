@@ -136,9 +136,16 @@ provided as a string in **"page"."object"**).
 - `I/user set(s) cookie ... from ...` - set cookie for the current domain
 (cookie provided as a string in **object** from **page**).
 4. `I/user print(s) cookies` - output all cookies that are currently set.
+5. `I/user send(s) "..." request to "..." with body "..."` - send request
+(request method provided in "" as a string - for example: `POST`) to URL
+(provided in "" as a string - for example: `"http://httpbin.org/post"`) with
+body (provided in "" as JSON - for example: `"{ \"test1\": 1, \"test2\": 2 }"`).
+> GET request will be sent with default header `'Content-Type': 'text/html'`,
+> all other requests will be sent with default header
+> `'Content-Type': 'application/json'`.
 
 ### Then steps
-5. `the title should be "..."` - verify that title of the current browser
+6. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
 
 ## Contributing
