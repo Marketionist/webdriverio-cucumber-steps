@@ -90,7 +90,7 @@ function parseCookie (cookie) {
 // #### Given steps ############################################################
 
 Given(
-    /^(?:I|user) (?:go|goes) to URL "([^"]*)?"$/,
+    'I/user go(es) to URL {string}',
     async function (url) {
         /**
          * The URL to navigate to
@@ -105,21 +105,21 @@ Given(
 );
 
 Given(
-    /^(?:I|user) (?:go|goes) to "([a-zA-Z0-9_-]+)"."([a-zA-Z0-9_-]+)"$/,
+    'I/user go(es) to {string}.{string}',
     async function (page, element) {
         await browser.url(pageObjects[page][element]);
     }
 );
 
 Given(
-    /^(?:I|user) (?:go|goes) to ([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+)(?:| page)$/,
+    'I/user go(es) to {word} from {word}( page)',
     async function (element, page) {
         await browser.url(pageObjects[page][element]);
     }
 );
 
 Given(
-    /^(?:I|user) (?:set|sets) cookie "([^"]*)?"$/,
+    'I/user set(s) cookie {string}',
     async function (cookie) {
         const cookieParsed = parseCookie(cookie);
 
@@ -144,7 +144,7 @@ Given(
 );
 
 Given(
-    /^(?:I|user) (?:set|sets) cookie "([a-zA-Z0-9_-]+)"."([a-zA-Z0-9_-]+)"$/,
+    'I/user set(s) cookie {string}.{string}',
     async function (page, element) {
         const cookieParsed = parseCookie(pageObjects[page][element]);
 
@@ -162,7 +162,7 @@ Given(
 );
 
 Given(
-    /^(?:I|user) (?:set|sets) cookie ([a-zA-Z0-9_-]+) from ([a-zA-Z0-9_-]+)(?:| page)$/,
+    'I/user set(s) cookie {word} from {word}( page)',
     async function (element, page) {
         const cookieParsed = parseCookie(pageObjects[page][element]);
 
@@ -180,7 +180,7 @@ Given(
 );
 
 Given(
-    /^(?:I|user) (?:print|prints) cookies$/,
+    'I/user print(s) cookies',
     async function () {
         const cookies = await browser.getCookies();
 
@@ -193,7 +193,7 @@ Given(
 // #### Then steps #############################################################
 
 Then(
-    /the title should be "([^"]*)"$/,
+    'the title should be {string}',
     async function (expectedTitle) {
         /**
          * The title of the current browser window
