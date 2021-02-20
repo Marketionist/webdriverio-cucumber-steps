@@ -143,9 +143,40 @@ body (provided in "" as JSON - for example: `"{ \"test1\": 1, \"test2\": 2 }"`).
 > GET request will be sent with default header `'Content-Type': 'text/html'`,
 > all other requests will be sent with default header
 > `'Content-Type': 'application/json'`.
+- `I/user send(s) "..." request to "..." with body "..."."..."` - send request
+(request method provided in "" as a string - for example: `POST`) to URL
+(provided in "" as a string - for example: `"http://httpbin.org/post"`) with
+body (provided in **"page"."object"**).
+- `I/user send(s) "..." request to "..."."..." with body "..."."..."` - send
+request (request method provided in "" as a string - for example: `POST`) to URL
+(provided in **"page"."object"**) with body (provided in **"page"."object"**).
+- `I/user send(s) "..." request to ... from ... with body ... from ...` - send
+request (request method provided in "" as a string - for example: `POST`) to URL
+(provided in **object** from **page**) with body (provided in **object** from
+**page**).
+6. `I/user send(s) "..." request to "..." with headers "..." and body "..."` -
+send request (request method provided in "" as a string - for example: `POST`)
+to URL (provided in "" as a string - for example: `"http://httpbin.org/post"`)
+with headers (provided in "" as JSON - for example:
+`"{ \"Content-Type\": \"application/json\", \"Authorization\": \"Bearer aBcD1234\" }"`
+) and body (provided in "" as JSON - for example:
+`"{ \"test1\": 1, \"test2\": 2 }"`).
+- `I/user send(s) "..." request to "..." with headers "..."."..." and body "..."."..."` -
+send request (request method provided in "" as a string - for example: `POST`)
+to URL (provided in "" as a string - for example: `"http://httpbin.org/post"`)
+with headers (provided in **"page"."object"**) and body (provided in
+**"page"."object"**).
+- `I/user send(s) "..." request to "..."."..." with headers "..."."..." and body "..."."..."` -
+send request (request method provided in "" as a string - for example: `POST`)
+to URL (provided in **"page"."object"**) with headers (provided in
+**"page"."object"**) and body (provided in **"page"."object"**).
+- `I/user send(s) "..." request to ... from ... with headers ... from ... and body ... from ...` -
+send request (request method provided in "" as a string - for example: `POST`)
+to URL (provided in **object** from **page**) with headers (provided in
+**object** from **page**) and body (provided in **object** from **page**).
 
 ### Then steps
-6. `the title should be "..."` - verify that title of the current browser
+7. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
 
 ## Contributing
