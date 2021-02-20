@@ -11,12 +11,12 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
 
   Scenario: 'user sets cookie' should set a cookie on the current page, 'I print cookies' should output current cookies
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user sets cookie "test1-page"."cookieTest"
+    When user sets cookie "test2-page"."cookieTest"
     Then user prints cookies
 
   Scenario: 'user sets cookie' should set a cookie on the current page, 'I print cookies' should output current cookies (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user sets cookie cookieTest from test1-page page
+    When user sets cookie cookieTest from test2-page page
     Then user prints cookies
 
   Scenario: 'user sends "POST" request' should return the content of the page (body provided in the step string)
