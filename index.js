@@ -195,6 +195,95 @@ Given(
     }
 );
 
+Given(
+    'I/user send(s) {string} request to {string} with body {string}.{string}',
+    async function (method, reqUrl, page, element) {
+        await createRequest(method, reqUrl, '', pageObjects[page][element]);
+    }
+);
+
+Given(
+    // eslint-disable-next-line
+    'I/user send(s) {string} request to {string}.{string} with body ' +
+        '{string}.{string}',
+    async function (method, page1, element1, page2, element2) {
+        await createRequest(
+            method,
+            pageObjects[page1][element1],
+            '',
+            pageObjects[page2][element2]
+        );
+    }
+);
+
+Given(
+    // eslint-disable-next-line
+    'I/user send(s) {string} request to {word} from {word}( page) with ' +
+        'body {word} from {word}( page)',
+    async function (method, element1, page1, element2, page2) {
+        await createRequest(
+            method,
+            pageObjects[page1][element1],
+            '',
+            pageObjects[page2][element2]
+        );
+    }
+);
+
+Given(
+    // eslint-disable-next-line
+    'I/user send(s) {string} request to {string} with headers {string} and ' +
+        'body {string}',
+    async function (method, reqUrl, headers, body) {
+        await createRequest(method, reqUrl, headers, body);
+    }
+);
+
+Given(
+    // eslint-disable-next-line
+    'I/user send(s) {string} request to {string} with headers ' +
+        '{string}.{string} and body {string}.{string}',
+    // eslint-disable-next-line
+    async function (method, reqUrl, page1, element1, page2, element2) {
+        await createRequest(
+            method,
+            reqUrl,
+            pageObjects[page1][element1],
+            pageObjects[page2][element2]
+        );
+    }
+);
+
+Given(
+    // eslint-disable-next-line
+    'I/user send(s) {string} request to {string}.{string} with headers' +
+        ' {string}.{string} and body {string}.{string}',
+    // eslint-disable-next-line
+    async function (method, page1, element1, page2, element2, page3, element3) {
+        await createRequest(
+            method,
+            pageObjects[page1][element1],
+            pageObjects[page2][element2],
+            pageObjects[page3][element3]
+        );
+    }
+);
+
+Given(
+    // eslint-disable-next-line
+    'I/user send(s) {string} request to {word} from {word}( page) with ' +
+        'headers {word} from {word}( page) and body {word} from {word}( page)',
+    // eslint-disable-next-line
+    async function (method, element1, page1, element2, page2, element3, page3) {
+        await createRequest(
+            method,
+            pageObjects[page1][element1],
+            pageObjects[page2][element2],
+            pageObjects[page3][element3]
+        );
+    }
+);
+
 // #### When steps #############################################################
 
 // #### Then steps #############################################################
