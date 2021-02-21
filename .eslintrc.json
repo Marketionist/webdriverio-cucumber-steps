@@ -16,6 +16,8 @@
     "process": true,
     "expect": true,
     "browser": true,
+    "$": true,
+    "$$": true,
     "beforeEach": true,
     "afterEach": true,
     "beforeAll": true,
