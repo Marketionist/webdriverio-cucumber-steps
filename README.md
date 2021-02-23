@@ -175,8 +175,14 @@ send request (request method provided in "" as a string - for example: `POST`)
 to URL (provided in **object** from **page**) with headers (provided in
 **object** from **page**) and body (provided in **object** from **page**).
 
+### When steps
+7. `I/user click(s) "..."."..."` - click on any element (provided in
+**"page"."object"** as CSS or XPath selector).
+- `I/user click(s) ... from ...` - click on any element (provided in **object**
+from **page** as CSS or XPath selector).
+
 ### Then steps
-7. `the title should be "..."` - verify that title of the current browser
+8. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
 
 ## Contributing
