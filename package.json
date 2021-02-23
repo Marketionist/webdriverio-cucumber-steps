@@ -53,15 +53,15 @@
     "wdio-chromedriver-service": ">=6.0.3"
   },
   "devDependencies": {
-    "@wdio/cli": "^7.0.3",
-    "@wdio/cucumber-framework": "^7.0.3",
-    "@wdio/local-runner": "^7.0.3",
-    "@wdio/selenium-standalone-service": "^7.0.3",
-    "@wdio/spec-reporter": "^7.0.3",
+    "@wdio/cli": "^7.0.7",
+    "@wdio/cucumber-framework": "^7.0.7",
+    "@wdio/local-runner": "^7.0.7",
+    "@wdio/selenium-standalone-service": "^7.0.7",
+    "@wdio/spec-reporter": "^7.0.7",
     "chromedriver": "^88.0.0",
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "eslint-plugin-cucumber": "^1.4.0",
     "node-testing-server": "^1.5.1",
-    "wdio-chromedriver-service": "^6.0.4"
+    "wdio-chromedriver-service": "^7.0.0"
   }
 }
