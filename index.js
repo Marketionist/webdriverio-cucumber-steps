@@ -375,3 +375,22 @@ Then(
         );
     }
 );
+
+Then('{string}.{string} should be present', async function (page, element) {
+    const elem = await getElement(page, element);
+
+    await expect(elem).toBeDisplayed(
+        `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}"`
+    );
+});
+
+Then(
+    '{word} from {word}( page) should be present',
+    async function (element, page) {
+        const elem = await getElement(page, element);
+
+        await expect(elem).toBeDisplayed(
+            `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}"`
+        );
+    }
+);
