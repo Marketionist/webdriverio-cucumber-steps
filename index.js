@@ -329,6 +329,10 @@ Given(
 
 // #### When steps #############################################################
 
+When('I/user reload(s) the page', async function () {
+    await browser.refresh();
+});
+
 When('I/user click(s) {string}.{string}', async function (page, element) {
     const elem = await getElement(page, element);
 
