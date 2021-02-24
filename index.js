@@ -5,6 +5,7 @@
 
 const path = require('path');
 const { readDirectories, createRequest } = require('js-automation-tools');
+const errors = require('./utils/errors.js');
 let Given;
 let When;
 let Then;
@@ -67,6 +68,48 @@ async function requirePageObjects () {
 }
 
 requirePageObjects();
+
+/**
+ * Gets proper element for further actions
+ * @param {String} page
+ * @param {String} elem
+ * @returns {Object} element
+ */
+async function getElement (page, elem) {
+    const locator = pageObjects[page][elem];
+
+    try {
+        const element = await $(locator);
+
+        return element;
+    } catch (error) {
+        throw new ReferenceError(`${errors.SELECTOR_NOT_DEFINED} "${page}"."${elem}" ${error}`);
+    }
+}
+
+/**
+ * Waits for element before executing further actions
+ * @param {Object} element
+ * @returns {Object} element
+ */
+async function waitForElement (element) {
+    try {
+        // Wait for element to be displayed
+        await element.waitForDisplayed();
+        // Wait for element to be clickable
+        await element.waitForClickable();
+        // Scroll to specific element
+        await element.scrollIntoView();
+
+        return element;
+    } catch (error) {
+        throw new ReferenceError(
+            `${errors.ELEMENT_NOT_DISPLAYED} ` +
+                `${JSON.stringify(element.selector, null, spacesToIndent)}: ` +
+                `${error}`
+        );
+    }
+}
 
 /**
  * Parses cookie
@@ -285,6 +328,31 @@ Given(
 );
 
 // #### When steps #############################################################
+
+When('I/user click(s) {string}.{string}', async function (page, element) {
+    const elem = await getElement(page, element);
+
+    try {
+        await waitForElement(elem);
+        await elem.click();
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}": ${error}`);
+    }
+});
+
+When(
+    'I/user click(s) {word} from {word}( page)',
+    async function (element, page) {
+        const elem = await getElement(page, element);
+
+        try {
+            await waitForElement(elem);
+            await elem.click();
+        } catch (error) {
+            throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}": ${error}`);
+        }
+    }
+);
 
 // #### Then steps #############################################################
 
