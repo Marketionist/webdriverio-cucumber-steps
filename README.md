@@ -176,14 +176,19 @@ to URL (provided in **object** from **page**) with headers (provided in
 **object** from **page**) and body (provided in **object** from **page**).
 
 ### When steps
-7. `I/user click(s) "..."."..."` - click on any element (provided in
+7. `I/user reload(s) the page` - reload current page.
+8. `I/user click(s) "..."."..."` - click on any element (provided in
 **"page"."object"** as CSS or XPath selector).
 - `I/user click(s) ... from ...` - click on any element (provided in **object**
 from **page** as CSS or XPath selector).
 
 ### Then steps
-8. `the title should be "..."` - verify that title of the current browser
+9. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
+10. `"..."."..." should be present` - verify that element (provided in
+**"page"."object"** as CSS or XPath selector) is present on the page.
+- `... from ... should be present` - verify that element (provided in
+**object** from **page** as CSS or XPath selector) is present on the page.
 
 ## Contributing
 You are welcome to contribute to this repository - please see
