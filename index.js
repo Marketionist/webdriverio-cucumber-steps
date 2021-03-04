@@ -358,6 +358,31 @@ When(
     }
 );
 
+When('I/user right click(s) {string}.{string}', async function (page, element) {
+    const elem = await getElement(page, element);
+
+    try {
+        await waitForElement(elem);
+        await elem.click({ button: 'right' });
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}": ${error}`);
+    }
+});
+
+When(
+    'I/user right click(s) {word} from {word}( page)',
+    async function (element, page) {
+        const elem = await getElement(page, element);
+
+        try {
+            await waitForElement(elem);
+            await elem.click({ button: 'right' });
+        } catch (error) {
+            throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}": ${error}`);
+        }
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
