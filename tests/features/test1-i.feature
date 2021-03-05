@@ -35,3 +35,13 @@ Feature: Running Cucumber with TestCafe - test 'I ...' steps feature 1
     Given I go to URL "http://localhost:8001/test1.html"
     When I click linkTest2PageXPath from test1-page
     Then the title should be "Test2 Page"
+
+  Scenario: 'I right click' on Right click menu button should open a menu
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I right click "test1-page"."buttonMenuRightClick"
+    Then "test1-page"."blockMenu" should be present
+
+  Scenario: 'I right click' on Right click menu button should open a menu (text style step, XPath)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I right click buttonMenuRightClickXPath from test1-page
+    Then blockMenu from test1-page should be present
