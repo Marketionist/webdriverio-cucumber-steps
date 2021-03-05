@@ -181,11 +181,15 @@ to URL (provided in **object** from **page**) with headers (provided in
 **"page"."object"** as CSS or XPath selector).
 - `I/user click(s) ... from ...` - click on any element (provided in **object**
 from **page** as CSS or XPath selector).
+9. `I/user right click(s) "..."."..."` - right click on any element (provided in
+**"page"."object"** as CSS or XPath selector).
+- `I/user right click(s) ... from ...` - right click on any element (provided in
+**object** from **page** as CSS or XPath selector).
 
 ### Then steps
-9. `the title should be "..."` - verify that title of the current browser
+10. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-10. `"..."."..." should be present` - verify that element (provided in
+11. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
