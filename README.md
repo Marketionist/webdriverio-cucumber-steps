@@ -17,14 +17,20 @@ Cucumber steps (step definitions) written with WebdriverIO for end-to-end (e2e) 
     <tbody>
         <tr>
             <td>12.x</td>
-            <td rowspan=3><p>6.x</p><p>7.x</p></td>
-            <td rowspan=3><p>5.x, 6.x</p><p>7.x</p></td>
+            <td rowspan=5><p>6.x</p><p>7.x</p></td>
+            <td rowspan=5><p>5.x, 6.x</p><p>7.x</p></td>
         </tr>
         <tr>
             <td>13.x</td>
         </tr>
         <tr>
             <td>14.x</td>
+        </tr>
+        <tr>
+            <td>15.x</td>
+        </tr>
+        <tr>
+            <td>16.x</td>
         </tr>
     </tbody>
 </table>
