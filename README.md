@@ -182,20 +182,47 @@ to URL (provided in **object** from **page**) with headers (provided in
 **object** from **page**) and body (provided in **object** from **page**).
 
 ### When steps
-7. `I/user reload(s) the page` - reload current page.
-8. `I/user click(s) "..."."..."` - click on any element (provided in
+7. `I/user log(s) in with l: "..." in "..."."..." and p: "..." in
+"..."."..." and click(s) "..."."..."` - log in to any site with login (provided
+in "" as a string), login/username input (provided in **page1**.**object1** as
+CSS selector), password (provided in "" as a string), password input (provided
+in **page2**.**object2** as CSS or XPath selector), login button (provided in
+**page3**.**object3** as CSS or XPath selector).
+- `I/user log(s) in with l: "..." in ... from ... and p: "..." in ...
+from ... and click(s) ... from ...` - log in to any site with login (provided
+in "" as a string), login/username input (provided in **object1** from **page1**
+as CSS or XPath selector), password (provided in "" as a string), password input
+(provided in **object2** from **page2** as CSS or XPath selector), login button
+(provided in **object3** from **page3** as CSS or XPath selector).
+- `I/user log(s) in with l: "..."."..." in "..."."..." and p: "..."."..." in
+"..."."..." and click(s) "..."."..."` - log in to any site with login (provided
+in **page1**.**object1** as CSS or XPath selector), login/username input
+(provided in **page2**.**object2** as CSS or XPath selector), password (provided
+in **page3**.**object3** as CSS or XPath selector), password input (provided in
+**page4**.**object4** as CSS or XPath selector), login button (provided in
+**page5**.**object5** as CSS or XPath selector).
+- `I/user log(s) in with l: ... from ... in ... from ... and p: ... from ... in
+... from ... and click(s) ... from ...` - log in to any site with login
+(provided in **object1** from **page1** as CSS or XPath selector),
+login/username input (provided in **object2** from **page2** as CSS or XPath
+selector), password (provided in **object3** from **page3** as CSS or XPath
+selector), password input (provided in **object4** from **page4** as CSS or
+XPath selector), login button (provided in **object5** from **page5** as CSS or
+XPath selector).
+8. `I/user reload(s) the page` - reload current page.
+9. `I/user click(s) "..."."..."` - click on any element (provided in
 **"page"."object"** as CSS or XPath selector).
 - `I/user click(s) ... from ...` - click on any element (provided in **object**
 from **page** as CSS or XPath selector).
-9. `I/user right click(s) "..."."..."` - right click on any element (provided in
+10. `I/user right click(s) "..."."..."` - right click on any element (provided in
 **"page"."object"** as CSS or XPath selector).
 - `I/user right click(s) ... from ...` - right click on any element (provided in
 **object** from **page** as CSS or XPath selector).
 
 ### Then steps
-10. `the title should be "..."` - verify that title of the current browser
+11. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-11. `"..."."..." should be present` - verify that element (provided in
+12. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
