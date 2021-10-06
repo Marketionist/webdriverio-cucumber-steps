@@ -4,6 +4,26 @@ Feature: Running Cucumber with TestCafe - test 'I ...' steps feature 2
   to run my end-to-end tests
 
 
+Scenario: 'I log in with l: and p: and click' should show credentials that were submitted for logging in
+    Given I go to "test2-page"."pageTest2"
+    When I log in with l: "testUser" in "test2-page"."inputUsername" and p: "1111" in "test2-page"."inputPassword" and click "test2-page"."buttonLogin"
+    Then blockCredentials from test2-page text should be "testUser1111"
+
+  Scenario: 'I log in with l: and p: and click' should show credentials that were submitted for logging in (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I log in with l: "testUser" in inputUsername from test2-page and p: "1111" in inputPassword from test2-page and click buttonLogin from test2-page
+    Then blockCredentials from test2-page text should be "testUser1111"
+
+  Scenario: 'I log in with l: and p: and click' should show credentials that were submitted for logging in (Page Object style step)
+    Given I go to "test2-page"."pageTest2"
+    When I log in with l: "test2-page"."loginTest2" in "test2-page"."inputUsername" and p: "test2-page"."passwordTest2" in "test2-page"."inputPassword" and click "test2-page"."buttonLogin"
+    Then blockCredentials from test2-page text should be "testUser1111"
+
+  Scenario: 'I log in with l: and p: and click' should show credentials that were submitted for logging in (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I log in with l: loginTest2 from test2-page in inputUsername from test2-page and p: passwordTest2 from test2-page in inputPassword from test2-page and click buttonLogin from test2-page
+    Then blockCredentials from test2-page text should be "testUser1111"
+
   Scenario: 'I set cookie' should set a cookie on the current page, 'I print cookies' should output current cookies (cookie provided in the step string)
     Given I go to URL "http://localhost:8001/test1.html"
     When I set cookie "my_test_cookie1=11"
