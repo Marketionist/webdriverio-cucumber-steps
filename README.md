@@ -218,19 +218,21 @@ from **page** as CSS or XPath selector).
 **"page"."object"** as CSS or XPath selector).
 - `I/user right click(s) ... from ...` - right click on any element (provided in
 **object** from **page** as CSS or XPath selector).
+11. `I/user wait(s) for ... ms` - wait for provided amount of time (in
+milliseconds).
 
 ### Then steps
-11. `the title should be "..."` - verify that title of the current browser
+12. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-12. `"..."."..." should be present` - verify that element (provided in
+13. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-13. `"..."."..." should not be present` - verify that element (provided in
+14. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-14. `"..."."..." text should be "..."` - verify that text of the element
+15. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
