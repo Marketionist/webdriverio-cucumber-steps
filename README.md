@@ -226,6 +226,22 @@ window/tab equals to the text (provided in "" as a string).
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
+13. `"..."."..." should not be present` - verify that element (provided in
+**"page"."object"** as CSS or XPath selector) is not present on the page.
+- `... from ... should not be present` - verify that element (provided in
+**object** from **page** as CSS or XPath selector) is not present on the page.
+14. `"..."."..." text should be "..."` - verify that text of the element
+(provided in **"page"."object"** as CSS or XPath selector) equals to the text
+(provided in "" as a string).
+- `... from ... text should be "..."` - verify that text of the element
+(provided in **object** from **page** as CSS or XPath selector) equals to the
+text (provided in "" as a string).
+- `"..."."..." text should be "..."."..."` - verify that text of the element
+(provided in **"page1"."object1"** as CSS or XPath selector) equals to the text
+(provided in **"page2"."object2"**).
+- `... from ... text should be ... from ...` - verify that text of the
+element (provided in **object1** from **page1** as CSS or XPath selector) equals
+to the text (provided in **object2** from **page2**).
 
 ## Contributing
 You are welcome to contribute to this repository - please see
