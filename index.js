@@ -535,3 +535,36 @@ Then(
         );
     }
 );
+
+Then('{string}.{string} text should be {string}', async function (
+    page, element, text
+) {
+    const elem = await getElement(page, element);
+
+    await expect(elem).toHaveText(text);
+});
+
+Then('{word} from {word}( page) text should be {string}', async function (
+    element, page, text
+) {
+    const elem = await getElement(page, element);
+
+    await expect(elem).toHaveText(text);
+});
+
+Then('{string}.{string} text should be {string}.{string}', async function (
+    page1, element1, page2, element2
+) {
+    const elem = await getElement(page1, element1);
+
+    await expect(elem).toHaveText(pageObjects[page2][element2]);
+});
+
+Then(
+    '{word} from {word}( page) text should be {word} from {word}( page)',
+    async function (element1, page1, element2, page2) {
+        const elem = await getElement(page1, element1);
+
+        await expect(elem).toHaveText(pageObjects[page2][element2]);
+    }
+);
