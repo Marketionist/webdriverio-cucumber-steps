@@ -536,6 +536,28 @@ Then(
     }
 );
 
+Then('{string}.{string} should not be present', async function (
+    page, element
+) {
+    const selector = await getData(page, element);
+    const numberOfElements = await $$(selector);
+
+    await expect(numberOfElements).toHaveLength(
+        0, `${errors.ELEMENT_PRESENT} "${page}"."${element}"`
+    );
+});
+
+Then('{word} from {word}( page) should not be present', async function (
+    element, page
+) {
+    const selector = await getData(page, element);
+    const numberOfElements = await $$(selector);
+
+    await expect(numberOfElements).toHaveLength(
+        0, `${errors.ELEMENT_PRESENT} "${page}"."${element}"`
+    );
+});
+
 Then('{string}.{string} text should be {string}', async function (
     page, element, text
 ) {
