@@ -88,6 +88,22 @@ async function getElement (page, elem) {
 }
 
 /**
+ * Gets proper data for further actions
+ * @param {String} page
+ * @param {String} elem
+ * @returns {Object} data
+ */
+async function getData (page, elem) {
+    const data = pageObjects[page][elem];
+
+    if (!data) {
+        throw new ReferenceError(`${errors.DATA_NOT_DEFINED} "${page}"."${elem}"`);
+    }
+
+    return data;
+}
+
+/**
  * Waits for element before executing further actions
  * @param {Object} element
  * @returns {Object} element
@@ -329,6 +345,106 @@ Given(
 
 // #### When steps #############################################################
 
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {string} in {string}.{string} and ' +
+    'p: {string} in {string}.{string} and click(s) {string}.{string}',
+    // eslint-disable-next-line max-params
+    async function (
+        login, page1, element1, password, page2, element2, page3, element3
+    ) {
+        const inputLogin = await getElement(page1, element1);
+        const inputPassword = await getElement(page2, element2);
+        const buttonLogin = await getElement(page3, element3);
+
+        await waitForElement(inputPassword);
+        await inputLogin.addValue(login);
+        await inputPassword.addValue(password);
+        await buttonLogin.click();
+    }
+);
+
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {string} in {word} from {word}( page) and ' +
+    'p: {string} in {word} from {word}( page) and click(s) ' +
+    '{word} from {word}( page)',
+    // eslint-disable-next-line max-params
+    async function (
+        login, element1, page1, password, element2, page2, element3, page3
+    ) {
+        const inputLogin = await getElement(page1, element1);
+        const inputPassword = await getElement(page2, element2);
+        const buttonLogin = await getElement(page3, element3);
+
+        await waitForElement(inputPassword);
+        await inputLogin.addValue(login);
+        await inputPassword.addValue(password);
+        await buttonLogin.click();
+    }
+);
+
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {string}.{string} in {string}.{string} and ' +
+    'p: {string}.{string} in {string}.{string} and click(s) {string}.{string}',
+    // eslint-disable-next-line max-params
+    async function (
+        page1,
+        element1,
+        page2,
+        element2,
+        page3,
+        element3,
+        page4,
+        element4,
+        page5,
+        element5
+    ) {
+        const login = await getData(page1, element1);
+        const inputLogin = await getElement(page2, element2);
+        const password = await getData(page3, element3);
+        const inputPassword = await getElement(page4, element4);
+        const buttonLogin = await getElement(page5, element5);
+
+        await waitForElement(inputPassword);
+        await inputLogin.addValue(login);
+        await inputPassword.addValue(password);
+        await buttonLogin.click();
+    }
+);
+
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {word} from {word}( page) in {word} from {word}( page) and ' +
+    'p: {word} from {word}( page) in {word} from {word}( page) and click(s) ' +
+    '{word} from {word}( page)',
+    // eslint-disable-next-line max-params
+    async function (
+        element1,
+        page1,
+        element2,
+        page2,
+        element3,
+        page3,
+        element4,
+        page4,
+        element5,
+        page5
+    ) {
+        const login = await getData(page1, element1);
+        const inputLogin = await getElement(page2, element2);
+        const password = await getData(page3, element3);
+        const inputPassword = await getElement(page4, element4);
+        const buttonLogin = await getElement(page5, element5);
+
+        await waitForElement(inputPassword);
+        await inputLogin.addValue(login);
+        await inputPassword.addValue(password);
+        await buttonLogin.click();
+    }
+);
+
 When('I/user reload(s) the page', async function () {
     await browser.refresh();
 });
@@ -417,5 +533,60 @@ Then(
         await expect(elem).toBeDisplayed(
             `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}"`
         );
+    }
+);
+
+Then('{string}.{string} should not be present', async function (
+    page, element
+) {
+    const selector = await getData(page, element);
+    const numberOfElements = await $$(selector);
+
+    await expect(numberOfElements).toHaveLength(
+        0, `${errors.ELEMENT_PRESENT} "${page}"."${element}"`
+    );
+});
+
+Then('{word} from {word}( page) should not be present', async function (
+    element, page
+) {
+    const selector = await getData(page, element);
+    const numberOfElements = await $$(selector);
+
+    await expect(numberOfElements).toHaveLength(
+        0, `${errors.ELEMENT_PRESENT} "${page}"."${element}"`
+    );
+});
+
+Then('{string}.{string} text should be {string}', async function (
+    page, element, text
+) {
+    const elem = await getElement(page, element);
+
+    await expect(elem).toHaveText(text);
+});
+
+Then('{word} from {word}( page) text should be {string}', async function (
+    element, page, text
+) {
+    const elem = await getElement(page, element);
+
+    await expect(elem).toHaveText(text);
+});
+
+Then('{string}.{string} text should be {string}.{string}', async function (
+    page1, element1, page2, element2
+) {
+    const elem = await getElement(page1, element1);
+
+    await expect(elem).toHaveText(pageObjects[page2][element2]);
+});
+
+Then(
+    '{word} from {word}( page) text should be {word} from {word}( page)',
+    async function (element1, page1, element2, page2) {
+        const elem = await getElement(page1, element1);
+
+        await expect(elem).toHaveText(pageObjects[page2][element2]);
     }
 );
