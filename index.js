@@ -499,6 +499,10 @@ When(
     }
 );
 
+When('I/user wait(s) for {int} ms', async function (timeToWait) {
+    await browser.pause(timeToWait);
+});
+
 // #### Then steps #############################################################
 
 Then(
