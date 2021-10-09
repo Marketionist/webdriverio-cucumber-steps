@@ -503,6 +503,36 @@ When('I/user wait(s) for {int} ms', async function (timeToWait) {
     await browser.pause(timeToWait);
 });
 
+When('I/user wait(s) and click(s) {string}.{string}', async function (
+    page, element
+) {
+    const elem = await getElement(page, element);
+    const timeToWait = 300;
+
+    try {
+        await browser.pause(timeToWait);
+        await elem.click();
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
+});
+
+When('I/user wait(s) and click(s) {word} from {word}( page)', async function (
+    element, page
+) {
+    const elem = await getElement(page, element);
+    const timeToWait = 300;
+
+    try {
+        await browser.pause(timeToWait);
+        await elem.click();
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
+});
+
 // #### Then steps #############################################################
 
 Then(
