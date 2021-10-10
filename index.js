@@ -533,6 +533,29 @@ When('I/user wait(s) and click(s) {word} from {word}( page)', async function (
     }
 });
 
+When('I/user wait(s) up to {int} ms for {string}.{string} to appear', async function (
+    timeToWait, page, element
+) {
+    const elem = await getElement(page, element);
+
+    await elem.waitForExist({
+        timeout: timeToWait,
+        timeoutMsg: `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}" up to ${timeToWait} ms`
+    });
+
+});
+
+When('I/user wait(s) up to {int} ms for {word} from {word}( page) to appear', async function (
+    timeToWait, element, page
+) {
+    const elem = await getElement(page, element);
+
+    await elem.waitForExist({
+        timeout: timeToWait,
+        timeoutMsg: `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}" up to ${timeToWait} ms`
+    });
+});
+
 // #### Then steps #############################################################
 
 Then(
