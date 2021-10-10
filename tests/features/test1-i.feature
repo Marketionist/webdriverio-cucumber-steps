@@ -45,3 +45,13 @@ Feature: Running Cucumber with TestCafe - test 'I ...' steps feature 1
     Given I go to URL "http://localhost:8001/test1.html"
     When I right click buttonMenuRightClickXPath from test1-page
     Then blockMenu from test1-page should be present
+
+  Scenario: 'I wait and click' on Page1 test page link should lead to Page2 test page
+    Given I go to "test1-page"."pageTest1"
+    When I wait and click "test1-page"."linkTest2Page"
+    Then the title should be "Test2 Page"
+
+  Scenario: 'I wait and click' on Page1 test page link should lead to Page2 test page (text style step)
+    Given I go to "test1-page"."pageTest1"
+    When I wait and click linkTest2Page from test1-page page
+    Then the title should be "Test2 Page"
