@@ -556,6 +556,30 @@ When('I/user wait(s) up to {int} ms for {word} from {word}( page) to appear', as
     });
 });
 
+When('I/user click(s) {string}.{string} if present', async function (
+    page, element
+) {
+    const elem = await getElement(page, element);
+    const isPresent = await elem.isExisting();
+
+    if (isPresent) {
+        // Click only if element is present
+        await elem.click();
+    }
+});
+
+When('I/user click(s) {word} from {word}( page) if present', async function (
+    element, page
+) {
+    const elem = await getElement(page, element);
+    const isPresent = await elem.isExisting();
+
+    if (isPresent) {
+        // Click only if element is present
+        await elem.click();
+    }
+});
+
 // #### Then steps #############################################################
 
 Then(
