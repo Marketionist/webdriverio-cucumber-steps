@@ -13,6 +13,7 @@ let test1Page = {
     buttonMenuRightClickXPath: '//*[@id="button-menu-right-click"]',
     blockMenu: '#block-menu',
     linkInvisibleTest2Page: '#link-invisible-test2-page',
+    linkInvisibleTest2PageXPath: '//*[@id="link-invisible-test2-page"]',
     pageLoader: 'http://localhost:8001/test-loader.html',
     blockTestContent: '#block-content',
     blockTestContentXPath: `//*[@id="block-content" and contains(text(),
