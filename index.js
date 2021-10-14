@@ -580,6 +580,32 @@ When('I/user click(s) {word} from {word}( page) if present', async function (
     }
 });
 
+When('I/user double click(s) {string}.{string}', async function (
+    page, element
+) {
+    const elem = await getElement(page, element);
+
+    try {
+        await elem.doubleClick();
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
+});
+
+When('I/user double click(s) {word} from {word}( page)', async function (
+    element, page
+) {
+    const elem = await getElement(page, element);
+
+    try {
+        await elem.doubleClick();
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
+});
+
 // #### Then steps #############################################################
 
 Then(
