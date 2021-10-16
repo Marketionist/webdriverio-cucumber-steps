@@ -93,3 +93,23 @@ Feature: Running Cucumber with TestCafe - test 'I ...' steps feature 1
     Given I go to URL "http://localhost:8001/test1.html"
     When I double click linkTest2Page from test1-page page
     Then the title should be "Test2 Page"
+
+  Scenario: 'I type' "Green" (string) text inside input should get this text typed in, 'text should be' should verify the text
+    Given I go to "test2-page"."pageTest2"
+    When I type "Green" in "test2-page"."inputColors"
+    Then "test2-page"."blockInputColor" text should be "Green"
+
+  Scenario: 'I type' "Green" (string) text inside input should get this text typed in, 'text should be' should verify the text (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I type "Green" in inputColors from test2-page page
+    Then blockInputColor from test2-page page text should be "Green"
+
+  Scenario: 'I type' "Gold" (page object) text inside input should get this text typed in, 'text should be' should verify the text
+    Given I go to "test2-page"."pageTest2"
+    When I type "test2-page"."textGold" in "test2-page"."inputColors"
+    Then "test2-page"."blockInputColor" text should be "test2-page"."textGold"
+
+  Scenario: 'I type' "Gold" (page object) text inside input should get this text typed in, 'text should be' should verify the text (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I type textGold from test2-page page in inputColors from test2-page page
+    Then blockInputColor from test2-page page text should be textGold from test2-page page
