@@ -239,19 +239,31 @@ page.
 in **"page"."object"** as CSS or XPath selector).
 - `I/user double click(s) ... from ...` - double click on any element (provided
 in **object** from **page** as CSS or XPath selector).
+16. `I/user type(s) "..." in "..."."..."` - type any text (provided in "" as a
+string) in the input field (provided in **"page"."object"** as CSS or XPath
+selector).
+- `I/user type(s) "..." in ... from ...` - type any text (provided in "" as a
+string) in the input field (provided in **object** from **page** as CSS
+selector).
+- `I/user type(s) "..."."..." in "..."."..."` - type any text (provided in
+**"page1"."object1"**) in the input field (provided in **"page2"."object2"** as
+CSS selector).
+- `I/user type(s) ... from ... in ... from ...` - type any text (provided in
+**object1** from **page1**) in the input field (provided in **object2** from
+**page2** as CSS or XPath selector).
 
 ### Then steps
-16. `the title should be "..."` - verify that title of the current browser
+17. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-17. `"..."."..." should be present` - verify that element (provided in
+18. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-18. `"..."."..." should not be present` - verify that element (provided in
+19. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-19. `"..."."..." text should be "..."` - verify that text of the element
+20. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
