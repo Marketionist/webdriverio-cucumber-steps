@@ -101,3 +101,13 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 1
     When user clicks linkInvisibleTest2PageXPath from test1-page if present
     And user waits for 200 ms
     Then the title should be "Test1 Page"
+
+  Scenario: 'user double clicks' on Page1 test page link should lead to Page2 test page
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user double clicks "test1-page"."linkTest2Page"
+    Then the title should be "Test2 Page"
+
+  Scenario: 'user double clicks' on Page1 test page link should lead to Page2 test page (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user double clicks linkTest2Page from test1-page
+    Then the title should be "Test2 Page"
