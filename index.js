@@ -606,6 +606,41 @@ When('I/user double click(s) {word} from {word}( page)', async function (
     }
 });
 
+When('I/user type(s) {string} in {string}.{string}', async function (
+    text, page, element
+) {
+    const elem = await getElement(page, element);
+
+    await elem.addValue(text);
+});
+
+When('I/user type(s) {string} in {word} from {word}( page)', async function (
+    text, element, page
+) {
+    const elem = await getElement(page, element);
+
+    await elem.addValue(text);
+});
+
+When('I/user type(s) {string}.{string} in {string}.{string}', async function (
+    page1, element1, page2, element2
+) {
+    const text = await getData(page1, element1);
+    const elem = await getElement(page2, element2);
+
+    await elem.addValue(text);
+});
+
+When(
+    'I/user type(s) {word} from {word}( page) in {word} from {word}( page)',
+    async function (element1, page1, element2, page2) {
+        const text = await getData(page1, element1);
+        const elem = await getElement(page2, element2);
+
+        await elem.addValue(text);
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
