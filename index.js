@@ -641,6 +641,43 @@ When(
     }
 );
 
+When('I/user clear(s) {string}.{string} and type(s) {string}', async function (
+    page, element, text
+) {
+    const elem = await getElement(page, element);
+
+    await elem.setValue(text);
+});
+
+When(
+    'I/user clear(s) {word} from {word}( page) and type(s) {string}',
+    async function (element, page, text) {
+        const elem = await getElement(page, element);
+
+        await elem.setValue(text);
+    }
+);
+
+When(
+    'I/user clear(s) {string}.{string} and type(s) {string}.{string}',
+    async function (page1, element1, page2, element2) {
+        const elem = await getElement(page1, element1);
+        const text = await getData(page2, element2);
+
+        await elem.setValue(text);
+    }
+);
+
+When(
+    'I/user clear(s) {word} from {word}( page) and type(s) {word} from {word}( page)',
+    async function (element1, page1, element2, page2) {
+        const elem = await getElement(page1, element1);
+        const text = await getData(page2, element2);
+
+        await elem.setValue(text);
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
