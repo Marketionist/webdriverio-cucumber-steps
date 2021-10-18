@@ -113,3 +113,27 @@ Feature: Running Cucumber with TestCafe - test 'I ...' steps feature 1
     Given I go to "test2-page"."pageTest2"
     When I type textGold from test2-page page in inputColors from test2-page page
     Then blockInputColor from test2-page page text should be textGold from test2-page page
+
+  Scenario: 'I clear and type' "Green" (string) text inside input should overwrite the text
+    Given I go to "test2-page"."pageTest2"
+    And I type "Yellow" in "test2-page"."inputColors"
+    When I clear "test2-page"."inputColors" and type "Green"
+    Then "test2-page"."blockInputColor" text should be "Green"
+
+  Scenario: 'I clear and type' "Green" (string) text inside input should overwrite the text (text style step)
+    Given I go to "test2-page"."pageTest2"
+    And I type "Yellow" in inputColors from test2-page page
+    When I clear inputColors from test2-page page and type "Green"
+    Then blockInputColor from test2-page page text should be "Green"
+
+  Scenario: 'I clear and type' "Gold" (page object) text inside input should overwrite the text
+    Given I go to "test2-page"."pageTest2"
+    And I type "test2-page"."textIndigo" in "test2-page"."inputColors"
+    When I clear "test2-page"."inputColors" and type "test2-page"."textGold"
+    Then "test2-page"."blockInputColor" text should be "test2-page"."textGold"
+
+  Scenario: 'I clear and type' "Gold" (page object) text inside input should overwrite the text (text style step)
+    Given I go to "test2-page"."pageTest2"
+    And I type textIndigo from test2-page page in inputColors from test2-page page
+    When I clear inputColors from test2-page page and type textGold from test2-page page
+    Then blockInputColor from test2-page page text should be textGold from test2-page page
