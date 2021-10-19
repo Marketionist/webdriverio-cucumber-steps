@@ -131,3 +131,27 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 1
     Given user goes to "test2-page"."pageTest2"
     When user types textGold from test2-page in inputColors from test2-page
     Then blockInputColor from test2-page text should be textGold from test2-page
+
+  Scenario: 'user clears and types' "Green" (string) text inside input should overwrite the text
+    Given user goes to "test2-page"."pageTest2"
+    And user types "Yellow" in "test2-page"."inputColors"
+    When user clears "test2-page"."inputColors" and types "Green"
+    Then "test2-page"."blockInputColor" text should be "Green"
+
+  Scenario: 'user clears and types' "Green" (string) text inside input should overwrite the text (text style step)
+    Given user goes to "test2-page"."pageTest2"
+    And user types "Yellow" in inputColors from test2-page
+    When user clears inputColors from test2-page and types "Green"
+    Then blockInputColor from test2-page text should be "Green"
+
+  Scenario: 'user clears and types' "Gold" (page object) text inside input should overwrite the text
+    Given user goes to "test2-page"."pageTest2"
+    And user types "test2-page"."textIndigo" in "test2-page"."inputColors"
+    When user clears "test2-page"."inputColors" and types "test2-page"."textGold"
+    Then "test2-page"."blockInputColor" text should be "test2-page"."textGold"
+
+  Scenario: 'user clears and types' "Gold" (page object) text inside input should overwrite the text (text style step)
+    Given user goes to "test2-page"."pageTest2"
+    And user types textIndigo from test2-page in inputColors from test2-page
+    When user clears inputColors from test2-page and types textGold from test2-page
+    Then blockInputColor from test2-page text should be textGold from test2-page

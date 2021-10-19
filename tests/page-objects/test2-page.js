@@ -6,6 +6,7 @@ let test2Page = {
 
     pageTest2: 'http://localhost:8001/test2.html',
     textGold: 'Gold',
+    textIndigo: 'Indigo',
     inputColors: '#input-colors',
     blockInputColor: '#block-input-color',
     loginTest2: 'testUser',
