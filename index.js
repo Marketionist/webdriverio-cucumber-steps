@@ -678,6 +678,61 @@ When(
     }
 );
 
+When('I/user select(s) {string} in {string}.{string}', async function (
+    text, page, element
+) {
+    const dropdown = await getElement(page, element);
+
+    try {
+        await dropdown.selectByVisibleText(text);
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
+});
+
+When('I/user select(s) {string} in {word} from {word}( page)', async function (
+    text, element, page
+) {
+    const dropdown = await getElement(page, element);
+
+    try {
+        await dropdown.selectByVisibleText(text);
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
+});
+
+When('I/user select(s) {string}.{string} in {string}.{string}', async function (
+    page1, element1, page2, element2
+) {
+    const text = await getData(page1, element1);
+    const dropdown = await getElement(page2, element2);
+
+    try {
+        await dropdown.selectByVisibleText(text);
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page2}"."${element2}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
+});
+
+When(
+    'I/user select(s) {word} from {word}( page) in {word} from {word}( page)',
+    async function (element1, page1, element2, page2) {
+        const text = await getData(page1, element1);
+        const dropdown = await getElement(page2, element2);
+
+        try {
+            await dropdown.selectByVisibleText(text);
+        } catch (error) {
+            throw new Error(`${errors.NO_ELEMENT} "${page2}"."${element2}"
+                ${JSON.stringify(error, null, spacesToIndent)}`);
+        }
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
