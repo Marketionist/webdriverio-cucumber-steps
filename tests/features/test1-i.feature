@@ -137,3 +137,23 @@ Feature: Running Cucumber with TestCafe - test 'I ...' steps feature 1
     And I type textIndigo from test2-page page in inputColors from test2-page page
     When I clear inputColors from test2-page page and type textGold from test2-page page
     Then blockInputColor from test2-page page text should be textGold from test2-page page
+
+  Scenario: 'I select' "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text
+    Given I go to "test2-page"."pageTest2"
+    When I select "Green" in "test2-page"."dropdownColors"
+    Then "test2-page"."blockDropdownColor" text should be "green"
+
+  Scenario: 'I select' "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I select "Green" in dropdownColors from test2-page page
+    Then blockDropdownColor from test2-page page text should be "green"
+
+  Scenario: 'I select' "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text
+    Given I go to "test2-page"."pageTest2"
+    When I select "test2-page"."textGold" in "test2-page"."dropdownColors"
+    Then "test2-page"."blockDropdownColor" text should be "test2-page"."textGold"
+
+  Scenario: 'I select' "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I select textGold from test2-page page in dropdownColors from test2-page page
+    Then blockDropdownColor from test2-page page text should be textGold from test2-page page
