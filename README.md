@@ -262,19 +262,31 @@ text (provided in "" as a string).
 - `I/user clear(s) ... from ... and type(s) ... from ...` - clear the input
 field (provided in **object1** from **page1** as CSS or XPath selector) and type
 any text (provided in **object2** from **page2**).
+18. `I/user select(s) "..." in "..."."..."` - select any option by text
+(provided in "" as a string) in the dropdown (provided in **"page"."object"** as
+CSS or XPath selector).
+- `I/user select(s) "..." in ... from ...` - select any option by text (provided
+in "" as a string) in the dropdown (provided in **object** from **page** as CSS
+or XPath selector).
+- `I/user select(s) "..."."..." in "..."."..."` - select any option by text
+(provided in **"page1"."object1"**) in the dropdown (provided in
+**"page2"."object2"** as CSS or XPath selector).
+- `I/user select(s) ... from ... in ... from ...` - select any option by text
+(provided in **object1** from **page1**) in the dropdown (provided in
+**object2** from **page2** as CSS or XPath selector).
 
 ### Then steps
-18. `the title should be "..."` - verify that title of the current browser
+19. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-19. `"..."."..." should be present` - verify that element (provided in
+20. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-20. `"..."."..." should not be present` - verify that element (provided in
+21. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-21. `"..."."..." text should be "..."` - verify that text of the element
+22. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
