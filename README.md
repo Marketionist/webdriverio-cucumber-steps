@@ -274,19 +274,25 @@ or XPath selector).
 - `I/user select(s) ... from ... in ... from ...` - select any option by text
 (provided in **object1** from **page1**) in the dropdown (provided in
 **object2** from **page2** as CSS or XPath selector).
+19. `I/user move(s) to "..."."..."` - move the mouse pointer over any element
+(hover with cursor an element provided in **"page"."object"** as CSS or XPath
+selector).
+- `I/user move(s) to ... from ...` - move the mouse pointer over any element
+(hover with cursor an element provided in **object** from **page** as CSS or
+XPath selector).
 
 ### Then steps
-19. `the title should be "..."` - verify that title of the current browser
+20. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-20. `"..."."..." should be present` - verify that element (provided in
+21. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-21. `"..."."..." should not be present` - verify that element (provided in
+22. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-22. `"..."."..." text should be "..."` - verify that text of the element
+23. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
