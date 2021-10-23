@@ -733,6 +733,24 @@ When(
     }
 );
 
+When(
+    'I/user move(s) to {string}.{string}',
+    async function (page, element) {
+        const elem = await getElement(page, element);
+
+        await elem.moveTo();
+    }
+);
+
+When(
+    'I/user move(s) to {word} from {word}( page)',
+    async function (element, page) {
+        const elem = await getElement(page, element);
+
+        await elem.moveTo();
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
