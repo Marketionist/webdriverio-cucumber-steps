@@ -68,3 +68,13 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
 
   Scenario: 'user sends "POST" request' should return the content of the page (full text style step)
     When user sends "POST" request to urlTestRequest from test2-page with headers headersTest from test2-page and body bodyTest from test2-page
+
+  Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user moves to "test1-page"."titleTest1"
+    Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
+
+  Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user moves to titleTest1 from test1-page
+    Then blockTextTest from test1-page text should contain txtTest1 from test1-page
