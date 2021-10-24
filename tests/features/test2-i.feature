@@ -79,3 +79,13 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     When I move to titleTest1 from test1-page page
     Then blockTextTest from test1-page page text should contain txtTest1 from test1-page page
 
+  Scenario: 'I move to with an offset' should trigger element's hovered state
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I move to "test1-page"."titleTest1" with an offset of x: 10px, y: 5px
+    Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
+
+  Scenario: 'I move to with an offset' should trigger element's hovered state (text style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I move to titleTest1 from test1-page page with an offset of x: 10px, y: 5px
+    Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
+
