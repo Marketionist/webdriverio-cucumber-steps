@@ -304,6 +304,18 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
+24. `"..."."..." text should contain "..."` - verify that text of the element
+(provided in **"page"."object"** as CSS or XPath selector) contains the text
+(provided in "" as a string).
+- `... from ... text should contain "..."` - verify that text of the element
+(provided in **object** from **page** as CSS or XPath selector) contains the
+text (provided in "" as a string).
+- `"..."."..." text should contain "..."."..."` - verify that text of the
+element (provided in **"page1"."object1"** as CSS or XPath selector) contains
+the text (provided in **"page2"."object2"**).
+- `... from ... text should contain ... from ...` - verify that text
+of the element (provided in **object1** from **page1** as CSS or XPath selector)
+contains the text (provided in **object2** from **page2**).
 
 ## Contributing
 You are welcome to contribute to this repository - please see
