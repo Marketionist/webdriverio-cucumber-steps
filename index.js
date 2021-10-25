@@ -751,6 +751,24 @@ When(
     }
 );
 
+When(
+    'I/user move(s) to {string}.{string} with an offset of x: {int}px, y: {int}px',
+    async function (page, element, offsetX, offsetY) {
+        const elem = await getElement(page, element);
+
+        await elem.moveTo({ xOffset: offsetX, yOffset: offsetY });
+    }
+);
+
+When(
+    'I/user move(s) to {word} from {word}( page) with an offset of x: {int}px, y: {int}px',
+    async function (element, page, offsetX, offsetY) {
+        const elem = await getElement(page, element);
+
+        await elem.moveTo({ xOffset: offsetX, yOffset: offsetY });
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
