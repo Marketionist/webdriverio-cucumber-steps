@@ -88,3 +88,13 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     Given user goes to URL "http://localhost:8001/test1.html"
     When user moves to titleTest1 from test1-page with an offset of x: 10px, y: 5px
     Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
+
+  Scenario: 'user switches to frame' should change the context to this iframe
+    Given user goes to URL "http://localhost:8001/test-iframe.html"
+    When user switches to "iframe-page"."iframeTest1Page" frame
+    Then "test1-page"."linkTest2Page" should be present
+
+  Scenario: 'user switches to frame' should change the context to this iframe (text style step)
+    Given user goes to URL "http://localhost:8001/test-iframe.html"
+    When user switches to iframeTest1Page frame from iframe-page
+    Then "test1-page"."linkTest2Page" should be present
