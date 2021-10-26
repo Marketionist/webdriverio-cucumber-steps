@@ -769,6 +769,22 @@ When(
     }
 );
 
+When('I/user switch(es) to {string}.{string} frame', async function (
+    page, element
+) {
+    const elem = await getElement(page, element);
+
+    await browser.switchToFrame(elem);
+});
+
+When('I/user switch(es) to {word} frame from {word}( page)', async function (
+    element, page
+) {
+    const elem = await getElement(page, element);
+
+    await browser.switchToFrame(elem);
+});
+
 // #### Then steps #############################################################
 
 Then(
