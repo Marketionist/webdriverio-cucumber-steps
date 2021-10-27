@@ -89,3 +89,12 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     When I move to titleTest1 from test1-page page with an offset of x: 10px, y: 5px
     Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
 
+  Scenario: 'I switch to frame' should change the context to this iframe
+    Given I go to URL "http://localhost:8001/test-iframe.html"
+    When I switch to "iframe-page"."iframeTest1Page" frame
+    Then "test1-page"."linkTest2Page" should be present
+
+  Scenario: 'I switch to frame' should change the context to this iframe (text style step)
+    Given I go to URL "http://localhost:8001/test-iframe.html"
+    When I switch to iframeTest1Page frame from iframe-page page
+    Then "test1-page"."linkTest2Page" should be present
