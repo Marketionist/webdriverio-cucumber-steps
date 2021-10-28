@@ -98,3 +98,13 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     Given user goes to URL "http://localhost:8001/test-iframe.html"
     When user switches to iframeTest1Page frame from iframe-page
     Then "test1-page"."linkTest2Page" should be present
+
+  Scenario: 'user waits up to and switches to frame' should wait for the iframe to load up to provided number of ms and then change the context to this iframe
+    Given user goes to URL "http://localhost:8001/test-iframe.html"
+    When user waits up to 10000 ms and switches to "iframe-page"."iframeTest1Page" frame
+    Then "test1-page"."linkTest2Page" should be present
+
+  Scenario: 'user waits up to and switches to frame' should wait for the iframe to load up to provided number of ms and then change the context to this iframe (text style step)
+    Given user goes to URL "http://localhost:8001/test-iframe.html"
+    When user waits up to 10000 ms and switches to iframeTest1Page frame from iframe-page page
+    Then "test1-page"."linkTest2Page" should be present
