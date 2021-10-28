@@ -815,6 +815,10 @@ When(
     }
 );
 
+When('I/user switch(es) to main frame', async function () {
+    await browser.switchToParentFrame();
+});
+
 // #### Then steps #############################################################
 
 Then(
