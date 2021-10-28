@@ -785,6 +785,36 @@ When('I/user switch(es) to {word} frame from {word}( page)', async function (
     await browser.switchToFrame(elem);
 });
 
+When(
+    'I/user wait(s) up to {int} ms and switch(es) to {string}.{string} frame',
+    async function (
+        timeToWait, page, element
+    ) {
+        const elem = await getElement(page, element);
+
+        await elem.waitForExist({
+            timeout: timeToWait,
+            timeoutMsg: `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}" up to ${timeToWait} ms`
+        });
+        await browser.switchToFrame(elem);
+    }
+);
+
+When(
+    'I/user wait(s) up to {int} ms and switch(es) to {word} frame from {word}( page)',
+    async function (
+        timeToWait, element, page
+    ) {
+        const elem = await getElement(page, element);
+
+        await elem.waitForExist({
+            timeout: timeToWait,
+            timeoutMsg: `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}" up to ${timeToWait} ms`
+        });
+        await browser.switchToFrame(elem);
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
