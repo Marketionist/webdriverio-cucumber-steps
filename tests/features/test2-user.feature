@@ -108,3 +108,10 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     Given user goes to URL "http://localhost:8001/test-iframe.html"
     When user waits up to 10000 ms and switches to iframeTest1Page frame from iframe-page page
     Then "test1-page"."linkTest2Page" should be present
+
+  Scenario: 'user switches to main frame' should change the context back to the main page
+    Given user goes to URL "http://localhost:8001/test-iframe.html"
+    And user switches to "iframe-page"."iframeTest1Page" frame
+    And "test1-page"."linkTest2Page" should be present
+    When user switches to main frame
+    Then "test1-page"."linkTest2Page" should not be present

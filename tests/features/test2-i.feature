@@ -108,3 +108,10 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     Given I go to URL "http://localhost:8001/test-iframe.html"
     When I wait up to 10000 ms and switch to iframeTest1Page frame from iframe-page page
     Then "test1-page"."linkTest2Page" should be present
+
+  Scenario: 'I switch to main frame' should change the context back to the main page
+    Given I go to URL "http://localhost:8001/test-iframe.html"
+    And I switch to "iframe-page"."iframeTest1Page" frame
+    And "test1-page"."linkTest2Page" should be present
+    When I switch to main frame
+    Then "test1-page"."linkTest2Page" should not be present
