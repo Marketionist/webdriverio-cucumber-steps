@@ -302,19 +302,31 @@ switch the context to that iframe (provided in **object** from **page** as CSS
 or XPath selector).
 23. `I/user switch(es) to main frame` - switch the context back to default
 (initial) frame.
+24. `I/user set(s) "..." file path in "..."."..."` - set a file path (provided
+in "" as a string) in the input (provided in **"page"."object"** as CSS or XPath
+selector). This step can be used to upload files and images.
+- `I/user set(s) "..." file path in ... from ...` - set a file path (provided in
+"" as a string) in the input (provided in **object** from **page** as CSS
+selector).
+- `I/user set(s) "..."."..." file path in "..."."..."` - set a file path
+(provided in **"page1"."object1"**) in the input (provided in
+**"page2"."object2"** as CSS or XPath selector).
+- `I/user set(s) ... from ... file path in ... from ...` - set a file path
+(provided in **object1** from **page1**) in the input (provided in
+**object2** from **page2** as CSS or XPath selector).
 
 ### Then steps
-24. `the title should be "..."` - verify that title of the current browser
+25. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-25. `"..."."..." should be present` - verify that element (provided in
+26. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-26. `"..."."..." should not be present` - verify that element (provided in
+27. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-27. `"..."."..." text should be "..."` - verify that text of the element
+28. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -326,7 +338,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-28. `"..."."..." text should contain "..."` - verify that text of the element
+29. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element

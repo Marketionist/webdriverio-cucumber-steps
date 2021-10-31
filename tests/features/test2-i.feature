@@ -115,3 +115,23 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     And "test1-page"."linkTest2Page" should be present
     When I switch to main frame
     Then "test1-page"."linkTest2Page" should not be present
+
+  Scenario: 'I set file path' should set the path to the file (string) inside the Upload image input
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I set "tests/media/test-image1.jpg" file path in "test1-page"."inputUploadFile"
+    Then "test1-page"."inputUploadFile" should be present
+
+  Scenario: 'I set file path' should set the path to the file (string) inside the Upload image input (text style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I set "tests/media/test-image1.jpg" file path in inputUploadFile from test1-page
+    Then "test1-page"."inputUploadFile" should be present
+
+  Scenario: 'I set file path' should set the path to the file (page object) inside the Upload image input
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I set "test1-page"."pathToImage1" file path in "test1-page"."inputUploadFile"
+    Then "test1-page"."inputUploadFile" should be present
+
+  Scenario: 'I set file path' should set the path to the file (page object) inside the Upload image input (text style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I set pathToImage1 from test1-page file path in inputUploadFile from test1-page
+    Then "test1-page"."inputUploadFile" should be present

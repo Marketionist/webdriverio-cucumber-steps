@@ -115,3 +115,23 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     And "test1-page"."linkTest2Page" should be present
     When user switches to main frame
     Then "test1-page"."linkTest2Page" should not be present
+
+  Scenario: 'user sets file path' should set the path to the file (string) inside the Upload image input
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets "tests/media/test-image1.jpg" file path in "test1-page"."inputUploadFile"
+    Then "test1-page"."inputUploadFile" should be present
+
+  Scenario: 'user sets file path' should set the path to the file (string) inside the Upload image input (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets "tests/media/test-image1.jpg" file path in inputUploadFile from test1-page
+    Then "test1-page"."inputUploadFile" should be present
+
+  Scenario: 'user sets file path' should set the path to the file (page object) inside the Upload image input
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets "test1-page"."pathToImage1" file path in "test1-page"."inputUploadFile"
+    Then "test1-page"."inputUploadFile" should be present
+
+  Scenario: 'user sets file path' should set the path to the file (page object) inside the Upload image input (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets pathToImage1 from test1-page file path in inputUploadFile from test1-page
+    Then "test1-page"."inputUploadFile" should be present
