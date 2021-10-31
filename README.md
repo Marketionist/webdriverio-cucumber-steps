@@ -300,19 +300,21 @@ XPath selector).
 to provided amount of time (in milliseconds) for the iframe to load and then
 switch the context to that iframe (provided in **object** from **page** as CSS
 or XPath selector).
+23. `I/user switch(es) to main frame` - switch the context back to default
+(initial) frame.
 
 ### Then steps
-23. `the title should be "..."` - verify that title of the current browser
+24. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-24. `"..."."..." should be present` - verify that element (provided in
+25. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-25. `"..."."..." should not be present` - verify that element (provided in
+26. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-26. `"..."."..." text should be "..."` - verify that text of the element
+27. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -324,7 +326,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-27. `"..."."..." text should contain "..."` - verify that text of the element
+28. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element
