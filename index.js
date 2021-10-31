@@ -166,14 +166,18 @@ Given(
 Given(
     'I/user go(es) to {string}.{string}',
     async function (page, element) {
-        await browser.url(pageObjects[page][element]);
+        const url = await getData(page, element);
+
+        await browser.url(url);
     }
 );
 
 Given(
     'I/user go(es) to {word} from {word}( page)',
     async function (element, page) {
-        await browser.url(pageObjects[page][element]);
+        const url = await getData(page, element);
+
+        await browser.url(url);
     }
 );
 
@@ -205,7 +209,8 @@ Given(
 Given(
     'I/user set(s) cookie {string}.{string}',
     async function (page, element) {
-        const cookieParsed = parseCookie(pageObjects[page][element]);
+        const cookie = await getData(page, element);
+        const cookieParsed = parseCookie(cookie);
 
         try {
             await browser.setCookies({
@@ -223,7 +228,8 @@ Given(
 Given(
     'I/user set(s) cookie {word} from {word}( page)',
     async function (element, page) {
-        const cookieParsed = parseCookie(pageObjects[page][element]);
+        const cookie = await getData(page, element);
+        const cookieParsed = parseCookie(cookie);
 
         try {
             await browser.setCookies({
@@ -257,7 +263,9 @@ Given(
 Given(
     'I/user send(s) {string} request to {string} with body {string}.{string}',
     async function (method, reqUrl, page, element) {
-        await createRequest(method, reqUrl, '', pageObjects[page][element]);
+        const body = await getData(page, element);
+
+        await createRequest(method, reqUrl, '', body);
     }
 );
 
@@ -266,11 +274,14 @@ Given(
     'I/user send(s) {string} request to {string}.{string} with body ' +
         '{string}.{string}',
     async function (method, page1, element1, page2, element2) {
+        const reqUrl = await getData(page1, element1);
+        const body = await getData(page2, element2);
+
         await createRequest(
             method,
-            pageObjects[page1][element1],
+            reqUrl,
             '',
-            pageObjects[page2][element2]
+            body
         );
     }
 );
@@ -280,11 +291,14 @@ Given(
     'I/user send(s) {string} request to {word} from {word}( page) with ' +
         'body {word} from {word}( page)',
     async function (method, element1, page1, element2, page2) {
+        const reqUrl = await getData(page1, element1);
+        const body = await getData(page2, element2);
+
         await createRequest(
             method,
-            pageObjects[page1][element1],
+            reqUrl,
             '',
-            pageObjects[page2][element2]
+            body
         );
     }
 );
@@ -304,11 +318,14 @@ Given(
         '{string}.{string} and body {string}.{string}',
     // eslint-disable-next-line
     async function (method, reqUrl, page1, element1, page2, element2) {
+        const headers = await getData(page1, element1);
+        const body = await getData(page2, element2);
+
         await createRequest(
             method,
             reqUrl,
-            pageObjects[page1][element1],
-            pageObjects[page2][element2]
+            headers,
+            body
         );
     }
 );
@@ -319,11 +336,15 @@ Given(
         ' {string}.{string} and body {string}.{string}',
     // eslint-disable-next-line
     async function (method, page1, element1, page2, element2, page3, element3) {
+        const reqUrl = await getData(page1, element1);
+        const headers = await getData(page2, element2);
+        const body = await getData(page3, element3);
+
         await createRequest(
             method,
-            pageObjects[page1][element1],
-            pageObjects[page2][element2],
-            pageObjects[page3][element3]
+            reqUrl,
+            headers,
+            body
         );
     }
 );
@@ -334,11 +355,15 @@ Given(
         'headers {word} from {word}( page) and body {word} from {word}( page)',
     // eslint-disable-next-line
     async function (method, element1, page1, element2, page2, element3, page3) {
+        const reqUrl = await getData(page1, element1);
+        const headers = await getData(page2, element2);
+        const body = await getData(page3, element3);
+
         await createRequest(
             method,
-            pageObjects[page1][element1],
-            pageObjects[page2][element2],
-            pageObjects[page3][element3]
+            reqUrl,
+            headers,
+            body
         );
     }
 );
@@ -586,6 +611,7 @@ When('I/user double click(s) {string}.{string}', async function (
     const elem = await getElement(page, element);
 
     try {
+        await waitForElement(elem);
         await elem.doubleClick();
     } catch (error) {
         throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
@@ -599,6 +625,7 @@ When('I/user double click(s) {word} from {word}( page)', async function (
     const elem = await getElement(page, element);
 
     try {
+        await waitForElement(elem);
         await elem.doubleClick();
     } catch (error) {
         throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
@@ -898,16 +925,18 @@ Then('{string}.{string} text should be {string}.{string}', async function (
     page1, element1, page2, element2
 ) {
     const elem = await getElement(page1, element1);
+    const text = await getData(page2, element2);
 
-    await expect(elem).toHaveText(pageObjects[page2][element2]);
+    await expect(elem).toHaveText(text);
 });
 
 Then(
     '{word} from {word}( page) text should be {word} from {word}( page)',
     async function (element1, page1, element2, page2) {
         const elem = await getElement(page1, element1);
+        const text = await getData(page2, element2);
 
-        await expect(elem).toHaveText(pageObjects[page2][element2]);
+        await expect(elem).toHaveText(text);
     }
 );
 
