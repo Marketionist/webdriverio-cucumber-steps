@@ -31,10 +31,10 @@ const pageObjectsFolderPathes = 'PO_FOLDER_PATH' in process.env ?
 
 const fullPageObjectsFolderPathes = isCalledExternally ?
     pageObjectsFolderPathes.map((pageObjectsFolderPath) => {
-        return path.join(__dirname, '..', '..', pageObjectsFolderPath)
+        return path.join(__dirname, '..', '..', pageObjectsFolderPath);
     }) :
     pageObjectsFolderPathes.map((pageObjectsFolderPath) => {
-        return path.join(__dirname, pageObjectsFolderPath)
+        return path.join(__dirname, pageObjectsFolderPath);
     });
 
 // Require all Page Object files in directory
@@ -845,6 +845,93 @@ When(
 When('I/user switch(es) to main frame', async function () {
     await browser.switchToParentFrame();
 });
+
+When('I/user set(s) {string} file path in {string}.{string}', async function (
+    pathToFile, page, element
+) {
+    const filePath = path.join(__dirname, pathToFile);
+    const inputFileUpload = await getElement(page, element);
+
+    await browser.executeAsync(
+        // Assign style to elem in the browser
+        (elem, done) => {
+            elem.style.display = 'block';
+            return done(elem.style.display);
+        },
+        // Pass in element so we don't need to query it again in the browser
+        inputFileUpload
+    );
+
+    await inputFileUpload.waitForDisplayed();
+
+    await inputFileUpload.setValue(filePath);
+});
+
+When('I/user set(s) {string} file path in {word} from {word}( page)', async function (
+    pathToFile, element, page
+) {
+    const filePath = path.join(__dirname, pathToFile);
+    const inputFileUpload = await getElement(page, element);
+
+    await browser.executeAsync(
+        // Assign style to elem in the browser
+        (elem, done) => {
+            elem.style.display = 'block';
+            return done(elem.style.display);
+        },
+        // Pass in element so we don't need to query it again in the browser
+        inputFileUpload
+    );
+
+    await inputFileUpload.waitForDisplayed();
+
+    await inputFileUpload.setValue(filePath);
+});
+
+When('I/user set(s) {string}.{string} file path in {string}.{string}', async function (
+    page1, element1, page2, element2
+) {
+    const pathToFile = await getData(page1, element1);
+    const filePath = path.join(__dirname, pathToFile);
+    const inputFileUpload = await getElement(page2, element2);
+
+    await browser.executeAsync(
+        // Assign style to elem in the browser
+        (elem, done) => {
+            elem.style.display = 'block';
+            return done(elem.style.display);
+        },
+        // Pass in element so we don't need to query it again in the browser
+        inputFileUpload
+    );
+
+    await inputFileUpload.waitForDisplayed();
+
+    await inputFileUpload.setValue(filePath);
+});
+
+When(
+    'I/user set(s) {word} from {word}( page) file path in {word} from {word}( page)',
+    async function (element1, page1, element2, page2) {
+        const pathToFile = await getData(page1, element1);
+        const filePath = path.join(__dirname, pathToFile);
+        const inputFileUpload = await getElement(page2, element2);
+
+        await browser.executeAsync(
+            // Assign style to elem in the browser
+            (elem, done) => {
+                elem.style.display = 'block';
+                return done(elem.style.display);
+            },
+            // Pass in element so we don't need to query it again in the browser
+            inputFileUpload
+        );
+
+        await inputFileUpload.waitForDisplayed();
+
+        await inputFileUpload.setValue(filePath);
+    }
+);
 
 // #### Then steps #############################################################
 
