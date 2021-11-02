@@ -312,7 +312,7 @@
       }
     ],
     "semi": [
-      0,
+      2,
       "always"
     ],
     "sort-vars": 0,
