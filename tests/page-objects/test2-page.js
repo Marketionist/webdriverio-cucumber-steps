@@ -21,7 +21,11 @@ let test2Page = {
     bodyTest: '{"items":3,"item1":"nice","item2":true,"item3":[1,2,3]}',
     headersTest: '{"Content-Type":"application/json",' +
         '"Authorization":"Bearer EfGh2345"}',
-    urlTestRequest: 'http://localhost:8001/post'
+    urlTestRequest: 'http://localhost:8001/post',
+    updateText: function () {
+        document.getElementById('text-test').innerHTML = 'Text to test ' +
+            'script execution';
+    }
 
 };
 

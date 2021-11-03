@@ -135,3 +135,13 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     Given user goes to URL "http://localhost:8001/test1.html"
     When user sets pathToImage1 from test1-page file path in inputUploadFile from test1-page
     Then "test1-page"."inputUploadFile" should be present
+
+  Scenario: 'user executes function' should change the content on the page
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user executes "test2-page"."updateText" function
+    Then "test1-page"."blockTextTest" text should contain "Text to test script execution"
+
+  Scenario: 'user executes function' should change the content on the page (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user executes updateText function from test2-page
+    Then "test1-page"."blockTextTest" text should contain "Text to test script execution"
