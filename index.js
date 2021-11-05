@@ -905,6 +905,22 @@ When(
     }
 );
 
+When('I/user execute(s) {string}.{string} function', async function (
+    page, element
+) {
+    const functionToExecute = await getData(page, element);
+
+    await browser.execute(functionToExecute);
+});
+
+When('I/user execute(s) {word} function from {word}( page)', async function (
+    element, page
+) {
+    const functionToExecute = await getData(page, element);
+
+    await browser.execute(functionToExecute);
+});
+
 // #### Then steps #############################################################
 
 Then(

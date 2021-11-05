@@ -135,3 +135,13 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     Given I go to URL "http://localhost:8001/test1.html"
     When I set pathToImage1 from test1-page file path in inputUploadFile from test1-page
     Then "test1-page"."inputUploadFile" should be present
+
+  Scenario: 'I execute function' should change the content on the page
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I execute "test2-page"."updateText" function
+    Then "test1-page"."blockTextTest" text should contain "Text to test script execution"
+
+  Scenario: 'I execute function' should change the content on the page (text style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I execute updateText function from test2-page page
+    Then "test1-page"."blockTextTest" text should contain "Text to test script execution"
