@@ -921,6 +921,30 @@ When('I/user execute(s) {word} function from {word}( page)', async function (
     await browser.execute(functionToExecute);
 });
 
+When(
+    'I/user drag(s)-and-drop(s) {string}.{string} to {string}.{string}',
+    async function (
+        page1, element1, page2, element2
+    ) {
+        const elemToDrag = getElement(page1, element1);
+        const elemToDropTo = getElement(page2, element2);
+
+        await elemToDrag.dragAndDrop(elemToDropTo);
+    }
+);
+
+When(
+    'I/user drag(s)-and-drop(s) {word} from {word}( page) to {word} from {word}( page)',
+    async function (
+        element1, page1, element2, page2
+    ) {
+        const elemToDrag = getElement(page1, element1);
+        const elemToDropTo = getElement(page2, element2);
+
+        await elemToDrag.dragAndDrop(elemToDropTo);
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
