@@ -325,19 +325,20 @@ element (provided in **"page2"."object2"** as CSS or XPath selector).
 element (provided in **object1** from **page1** as CSS or XPath selector) to
 another element (provided in **object2** from **page2** as CSS or XPath selector
 ).
+27. `I/user accept(s) browser alert` - accept (OK) browser alert.
 
 ### Then steps
-27. `the title should be "..."` - verify that title of the current browser
+28. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-28. `"..."."..." should be present` - verify that element (provided in
+29. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-29. `"..."."..." should not be present` - verify that element (provided in
+30. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-30. `"..."."..." text should be "..."` - verify that text of the element
+31. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -349,7 +350,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-31. `"..."."..." text should contain "..."` - verify that text of the element
+32. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element
