@@ -145,3 +145,9 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     Given I go to URL "http://localhost:8001/test1.html"
     When I execute updateText function from test2-page page
     Then "test1-page"."blockTextTest" text should contain "Text to test script execution"
+
+  Scenario: 'I accept browser alert' should get the alert accepted
+    Given I go to URL "http://localhost:8001/test-alert.html"
+    And I click "alert-page"."buttonLaunchAlert"
+    When I accept browser alert
+    Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertAccepted"
