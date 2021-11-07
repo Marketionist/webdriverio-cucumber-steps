@@ -145,3 +145,9 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     Given user goes to URL "http://localhost:8001/test1.html"
     When user executes updateText function from test2-page
     Then "test1-page"."blockTextTest" text should contain "Text to test script execution"
+
+  Scenario: 'user accepts browser alert' should get the alert accepted
+    Given user goes to URL "http://localhost:8001/test-alert.html"
+    And user clicks "alert-page"."buttonLaunchAlert"
+    When user accepts browser alert
+    Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertAccepted"
