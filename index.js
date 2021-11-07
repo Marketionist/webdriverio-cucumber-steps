@@ -953,6 +953,31 @@ When('I/user dismiss(es) browser alert', async function () {
     await browser.dismissAlert();
 });
 
+When(
+    'I/user open(s) {string} in new browser window',
+    async function (url) {
+        await browser.newWindow(url);
+    }
+);
+
+When(
+    'I/user open(s) {string}.{string} in new browser window',
+    async function (page, element) {
+        const url = await getData(page, element);
+
+        await browser.newWindow(url);
+    }
+);
+
+When(
+    'I/user open(s) {word} from {word}( page) in new browser window',
+    async function (element, page) {
+        const url = await getData(page, element);
+
+        await browser.newWindow(url);
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
