@@ -151,3 +151,9 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     And user clicks "alert-page"."buttonLaunchAlert"
     When user accepts browser alert
     Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertAccepted"
+
+  Scenario: 'user dismisses browser alert' should get the alert canceled
+    Given user goes to URL "http://localhost:8001/test-alert.html"
+    And user clicks "alert-page"."buttonLaunchAlert"
+    When user dismisses browser alert
+    Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"

@@ -151,3 +151,9 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     And I click "alert-page"."buttonLaunchAlert"
     When I accept browser alert
     Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertAccepted"
+
+  Scenario: 'I dismiss browser alert' should get the alert canceled
+    Given I go to URL "http://localhost:8001/test-alert.html"
+    And I click "alert-page"."buttonLaunchAlert"
+    When I dismiss browser alert
+    Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"
