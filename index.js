@@ -949,6 +949,10 @@ When('I/user accept(s) browser alert', async function () {
     await browser.acceptAlert();
 });
 
+When('I/user dismiss(es) browser alert', async function () {
+    await browser.dismissAlert();
+});
+
 // #### Then steps #############################################################
 
 Then(
