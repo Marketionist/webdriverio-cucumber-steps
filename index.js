@@ -1106,3 +1106,23 @@ Then(
         await expect(elem).toHaveTextContaining(text);
     }
 );
+
+Then('URL should contain {string}', async function (url) {
+    await expect(browser).toHaveUrlContaining(url);
+});
+
+Then('URL should contain {string}.{string}', async function (
+    page, element
+) {
+    const url = await getData(page, element);
+
+    await expect(browser).toHaveUrlContaining(url);
+});
+
+Then('URL should contain {word} from {word}( page)', async function (
+    element, page
+) {
+    const url = await getData(page, element);
+
+    await expect(browser).toHaveUrlContaining(url);
+});
