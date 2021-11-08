@@ -327,19 +327,26 @@ another element (provided in **object2** from **page2** as CSS or XPath selector
 ).
 27. `I/user accept(s) browser alert` - accept (OK) browser alert.
 28. `I/user dismiss(es) browser alert` - dismiss (Cancel) browser alert.
+29. `I/user open(s) "..." in new browser window` - open a site (by its URL
+provided in "" as a string - for example: `"https://github.com/Marketionist"`)
+in the new browser window/tab.
+- `I/user open(s) "..."."..." in new browser window` - open a site (by its URL
+provided in **"page"."object"**) in the new browser window/tab.
+- `I/user open(s) ... from ... in new browser window` - open a site (by its URL
+provided in **object** from **page**) in the new browser window/tab.
 
 ### Then steps
-29. `the title should be "..."` - verify that title of the current browser
+30. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-30. `"..."."..." should be present` - verify that element (provided in
+31. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-31. `"..."."..." should not be present` - verify that element (provided in
+32. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-32. `"..."."..." text should be "..."` - verify that text of the element
+33. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -351,7 +358,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-33. `"..."."..." text should contain "..."` - verify that text of the element
+34. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element
