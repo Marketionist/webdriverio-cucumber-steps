@@ -957,6 +957,7 @@ When(
     'I/user open(s) {string} in new browser window',
     async function (url) {
         await browser.newWindow(url);
+        await browser.switchWindow(url);
     }
 );
 
@@ -966,6 +967,7 @@ When(
         const url = await getData(page, element);
 
         await browser.newWindow(url);
+        await browser.switchWindow(url);
     }
 );
 
@@ -975,6 +977,7 @@ When(
         const url = await getData(page, element);
 
         await browser.newWindow(url);
+        await browser.switchWindow(url);
     }
 );
 
