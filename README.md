@@ -370,6 +370,12 @@ the text (provided in **"page2"."object2"**).
 - `... from ... text should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS or XPath selector)
 contains the text (provided in **object2** from **page2**).
+35. `URL should contain "..."` - verify that URL of the current page contains
+the text (provided in "" as a string).
+- `URL should contain "..."."..."` - verify that URL of the current page
+contains the text (provided in **"page"."object"**).
+- `URL should contain ... from ...` - verify that URL of the current page
+contains the text (provided in **object** from **page**).
 
 ## Contributing
 You are welcome to contribute to this repository - please see
