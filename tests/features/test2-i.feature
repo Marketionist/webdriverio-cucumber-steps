@@ -157,3 +157,18 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     And I click "alert-page"."buttonLaunchAlert"
     When I dismiss browser alert
     Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"
+
+  Scenario: 'I open in new browser window' should open the page in the new browser window/tab (URL provided in the step string)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I open "http://localhost:8001/test2.html" in new browser window
+    Then URL should contain "/test2.html"
+
+  Scenario: 'I open in new browser window' should open the page in the new browser window/tab (Page Object style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I open "test2-page"."pageTest2" in new browser window
+    Then URL should contain "/test2.html"
+
+  Scenario: 'I open in new browser window' should open the page in the new browser window/tab (text style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I open pageTest2 from test2-page page in new browser window
+    Then URL should contain "/test2.html"

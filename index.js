@@ -953,6 +953,34 @@ When('I/user dismiss(es) browser alert', async function () {
     await browser.dismissAlert();
 });
 
+When(
+    'I/user open(s) {string} in new browser window',
+    async function (url) {
+        await browser.newWindow(url);
+        await browser.switchWindow(url);
+    }
+);
+
+When(
+    'I/user open(s) {string}.{string} in new browser window',
+    async function (page, element) {
+        const url = await getData(page, element);
+
+        await browser.newWindow(url);
+        await browser.switchWindow(url);
+    }
+);
+
+When(
+    'I/user open(s) {word} from {word}( page) in new browser window',
+    async function (element, page) {
+        const url = await getData(page, element);
+
+        await browser.newWindow(url);
+        await browser.switchWindow(url);
+    }
+);
+
 // #### Then steps #############################################################
 
 Then(
@@ -1081,3 +1109,23 @@ Then(
         await expect(elem).toHaveTextContaining(text);
     }
 );
+
+Then('URL should contain {string}', async function (url) {
+    await expect(browser).toHaveUrlContaining(url);
+});
+
+Then('URL should contain {string}.{string}', async function (
+    page, element
+) {
+    const url = await getData(page, element);
+
+    await expect(browser).toHaveUrlContaining(url);
+});
+
+Then('URL should contain {word} from {word}( page)', async function (
+    element, page
+) {
+    const url = await getData(page, element);
+
+    await expect(browser).toHaveUrlContaining(url);
+});

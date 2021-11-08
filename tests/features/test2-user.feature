@@ -157,3 +157,18 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     And user clicks "alert-page"."buttonLaunchAlert"
     When user dismisses browser alert
     Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"
+
+  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (URL provided in the step string)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user opens "http://localhost:8001/test2.html" in new browser window
+    Then URL should contain "/test2.html"
+
+  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (Page Object style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user opens "test2-page"."pageTest2" in new browser window
+    Then URL should contain "/test2.html"
+
+  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user opens pageTest2 from test2-page page in new browser window
+    Then URL should contain "/test2.html"
