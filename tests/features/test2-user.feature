@@ -178,3 +178,10 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     And user opens pageTest2 from test2-page page in new browser window
     When user closes current browser window
     Then URL should contain "/test1.html"
+
+  Scenario: 'user presses' should press the specified keyboard keys
+    Given user goes to URL "http://localhost:8001/test2.html"
+    And user types "Text is 12" in "test2-page"."inputColors"
+    And user clicks "test2-page"."inputColors"
+    When user presses "Home ArrowRight ArrowRight ArrowRight ArrowRight Delete Delete Delete"
+    Then "test2-page"."blockInputColor" text should be "Text 12"
