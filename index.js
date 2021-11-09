@@ -985,6 +985,12 @@ When('I/user close(s) current browser window', async function () {
     await browser.closeWindow();
 });
 
+When('I/user press(es) {string}', async function (text) {
+    const words = text.split(' ');
+
+    await browser.keys(words);
+});
+
 // #### Then steps #############################################################
 
 Then(
