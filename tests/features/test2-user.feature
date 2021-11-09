@@ -172,3 +172,9 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     Given user goes to URL "http://localhost:8001/test1.html"
     When user opens pageTest2 from test2-page page in new browser window
     Then URL should contain "/test2.html"
+
+  Scenario: 'user closes current browser window' should close current browser window/tab
+    Given user goes to URL "http://localhost:8001/test1.html"
+    And user opens pageTest2 from test2-page page in new browser window
+    When user closes current browser window
+    Then URL should contain "/test1.html"

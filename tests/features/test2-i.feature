@@ -172,3 +172,9 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     Given I go to URL "http://localhost:8001/test1.html"
     When I open pageTest2 from test2-page page in new browser window
     Then URL should contain "/test2.html"
+
+  Scenario: 'I close current browser window' should close current browser window/tab
+    Given I go to URL "http://localhost:8001/test1.html"
+    And I open pageTest2 from test2-page page in new browser window
+    When I close current browser window
+    Then URL should contain "/test1.html"
