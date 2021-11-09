@@ -981,6 +981,10 @@ When(
     }
 );
 
+When('I/user close(s) current browser window', async function () {
+    await browser.closeWindow();
+});
+
 // #### Then steps #############################################################
 
 Then(
