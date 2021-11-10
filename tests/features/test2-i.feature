@@ -178,3 +178,10 @@ Scenario: 'I log in with l: and p: and click' should show credentials that were 
     And I open pageTest2 from test2-page page in new browser window
     When I close current browser window
     Then URL should contain "/test1.html"
+
+  Scenario: 'I press' should press the specified keyboard keys
+    Given I go to URL "http://localhost:8001/test2.html"
+    And I type "Text is 12" in "test2-page"."inputColors"
+    And I click "test2-page"."inputColors"
+    When user presses "Home ArrowRight ArrowRight ArrowRight ArrowRight Delete Delete Delete"
+    Then "test2-page"."blockInputColor" text should be "Text 12"
