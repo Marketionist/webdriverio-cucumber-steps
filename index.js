@@ -971,7 +971,14 @@ When(
     'I/user open(s) {string} in new browser window',
     async function (url) {
         await browser.newWindow(url);
-        await browser.switchWindow(url);
+
+        const handles = await browser.getWindowHandles();
+
+        if (handles.length === 2) {
+            await browser.switchToWindow(handles[1]);
+        } else {
+            await browser.switchWindow(url);
+        }
     }
 );
 
@@ -981,7 +988,14 @@ When(
         const url = await getData(page, element);
 
         await browser.newWindow(url);
-        await browser.switchWindow(url);
+
+        const handles = await browser.getWindowHandles();
+
+        if (handles.length === 2) {
+            await browser.switchToWindow(handles[1]);
+        } else {
+            await browser.switchWindow(url);
+        }
     }
 );
 
@@ -991,7 +1005,14 @@ When(
         const url = await getData(page, element);
 
         await browser.newWindow(url);
-        await browser.switchWindow(url);
+
+        const handles = await browser.getWindowHandles();
+
+        if (handles.length === 2) {
+            await browser.switchToWindow(handles[1]);
+        } else {
+            await browser.switchWindow(url);
+        }
     }
 );
 
