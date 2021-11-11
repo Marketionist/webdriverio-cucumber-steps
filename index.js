@@ -1032,6 +1032,10 @@ When('I/user set(s) PAGE_URL environment variable', async function () {
     console.log(`process.env.PAGE_URL: ${process.env.PAGE_URL}`);
 });
 
+When('I/user go(es) to PAGE_URL', async function () {
+    await browser.navigateTo(process.env.PAGE_URL);
+});
+
 // #### Then steps #############################################################
 
 Then(
