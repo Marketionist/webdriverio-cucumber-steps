@@ -1036,6 +1036,10 @@ When('I/user go(es) to PAGE_URL', async function () {
     await browser.navigateTo(process.env.PAGE_URL);
 });
 
+When('I/user debug(s)', async function () {
+    await browser.debug();
+});
+
 // #### Then steps #############################################################
 
 Then(
