@@ -169,6 +169,20 @@ async function setPathToFile (pathToFile, inputFileUpload) {
     await inputFileUpload.setValue(pathToFileFull);
 }
 
+/**
+ * Gets URL of the current page
+ * @returns {String} URL
+ */
+async function getCurrentPageUrl () {
+    try {
+        const pageUrl = await browser.getUrl();
+
+        return pageUrl;
+    } catch (error) {
+        throw new Error(`${errors.NO_URL} ${error}`);
+    }
+}
+
 // #### Given steps ############################################################
 
 Given(
@@ -957,7 +971,14 @@ When(
     'I/user open(s) {string} in new browser window',
     async function (url) {
         await browser.newWindow(url);
-        await browser.switchWindow(url);
+
+        const handles = await browser.getWindowHandles();
+
+        if (handles.length === 2) {
+            await browser.switchToWindow(handles[1]);
+        } else {
+            await browser.switchWindow(url);
+        }
     }
 );
 
@@ -967,7 +988,14 @@ When(
         const url = await getData(page, element);
 
         await browser.newWindow(url);
-        await browser.switchWindow(url);
+
+        const handles = await browser.getWindowHandles();
+
+        if (handles.length === 2) {
+            await browser.switchToWindow(handles[1]);
+        } else {
+            await browser.switchWindow(url);
+        }
     }
 );
 
@@ -977,7 +1005,14 @@ When(
         const url = await getData(page, element);
 
         await browser.newWindow(url);
-        await browser.switchWindow(url);
+
+        const handles = await browser.getWindowHandles();
+
+        if (handles.length === 2) {
+            await browser.switchToWindow(handles[1]);
+        } else {
+            await browser.switchWindow(url);
+        }
     }
 );
 
@@ -986,9 +1021,19 @@ When('I/user close(s) current browser window', async function () {
 });
 
 When('I/user press(es) {string}', async function (text) {
-    const words = text.split(' ');
+    const keys = text.split(' ');
 
-    await browser.keys(words);
+    await browser.keys(keys);
+});
+
+When('I/user set(s) PAGE_URL environment variable', async function () {
+    process.env.PAGE_URL = await getCurrentPageUrl();
+
+    console.log(`process.env.PAGE_URL: ${process.env.PAGE_URL}`);
+});
+
+When('I/user go(es) to PAGE_URL', async function () {
+    await browser.navigateTo(process.env.PAGE_URL);
 });
 
 // #### Then steps #############################################################

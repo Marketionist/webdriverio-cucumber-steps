@@ -185,3 +185,10 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 2
     And user clicks "test2-page"."inputColors"
     When user presses "Home ArrowRight ArrowRight ArrowRight ArrowRight Delete Delete Delete"
     Then "test2-page"."blockInputColor" text should be "Text 12"
+
+  Scenario: 'user sets PAGE_URL environment variable', 'user goes to PAGE_URL' should set PAGE_URL environment variable and open a page with this URL
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets PAGE_URL environment variable
+    And user goes to URL "http://localhost:8001/test2.html"
+    And user goes to PAGE_URL
+    Then URL should contain "/test1.html"
