@@ -342,19 +342,21 @@ as a string - for example: `"ArrowRight Delete"` - see the
 write it to PAGE_URL environment variable.
 33. `I/user go(es) to PAGE_URL` - open a site from PAGE_URL environment
 variable.
+34. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
+debugging.
 
 ### Then steps
-34. `the title should be "..."` - verify that title of the current browser
+35. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-35. `"..."."..." should be present` - verify that element (provided in
+36. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-36. `"..."."..." should not be present` - verify that element (provided in
+37. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-37. `"..."."..." text should be "..."` - verify that text of the element
+38. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -366,7 +368,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-38. `"..."."..." text should contain "..."` - verify that text of the element
+39. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element
@@ -378,7 +380,7 @@ the text (provided in **"page2"."object2"**).
 - `... from ... text should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS or XPath selector)
 contains the text (provided in **object2** from **page2**).
-39. `URL should contain "..."` - verify that URL of the current page contains
+40. `URL should contain "..."` - verify that URL of the current page contains
 the text (provided in "" as a string).
 - `URL should contain "..."."..."` - verify that URL of the current page
 contains the text (provided in **"page"."object"**).
