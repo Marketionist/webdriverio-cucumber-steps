@@ -1044,7 +1044,7 @@ When('I/user debug(s)', async function () {
 
 Then(
     'the title should be {string}',
-    async function (expectedTitle) {
+    async function (text) {
         /**
          * The title of the current browser window
          * @type {String}
@@ -1052,11 +1052,20 @@ Then(
         const title = await browser.getTitle();
 
         await expect(title).toEqual(
-            expectedTitle,
-            `Expected title to be "${expectedTitle}" but found "${title}"`
+            text,
+            `Expected title to be "${text}" but found "${title}"`
         );
     }
 );
+
+Then('the title should contain {string}', async function (text) {
+    const title = await browser.getTitle();
+
+    await expect(title).toContain(
+        text,
+        `Expected title to contain "${text}" but found "${title}"`
+    );
+});
 
 Then('{string}.{string} should be present', async function (page, element) {
     const elem = await getElement(page, element);
