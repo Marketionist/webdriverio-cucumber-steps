@@ -183,6 +183,20 @@ async function getCurrentPageUrl () {
     }
 }
 
+/**
+ * Replaces all substrings in a string
+ * @param {String} string - string to change
+ * @param {Object} mapObject - object with substrings to replace in keys and replace values in values
+ * @returns {String} new string
+ */
+function replaceMultipleSubstrings (string, mapObject) {
+    let regularExpression = new RegExp(Object.keys(mapObject).join('|'), 'gi');
+
+    return string.replace(regularExpression, function (matched) {
+        return mapObject[matched.toLowerCase()];
+    });
+}
+
 // #### Given steps ############################################################
 
 Given(
@@ -1053,7 +1067,10 @@ Then(
 
         await expect(title).toEqual(
             text,
-            `Expected title to be "${text}" but found "${title}"`
+            replaceMultipleSubstrings(
+                errors.TITLE_NOT_EQUAL,
+                { '%text%': text, '%title%': title }
+            )
         );
     }
 );
@@ -1063,7 +1080,10 @@ Then('the title should contain {string}', async function (text) {
 
     await expect(title).toContain(
         text,
-        `Expected title to contain "${text}" but found "${title}"`
+        replaceMultipleSubstrings(
+            errors.TITLE_NOT_CONTAINS,
+            { '%text%': text, '%title%': title }
+        )
     );
 });
 
@@ -1085,6 +1105,44 @@ Then(
         );
     }
 );
+
+Then('{int} {string}.{string} should be present', async function (
+    number, page, element
+) {
+    const selector = await getData(page, element);
+    const numberOfElements = await $$(selector);
+
+    await expect(numberOfElements).toHaveLength(
+        number,
+        `${replaceMultipleSubstrings(
+            errors.ELEMENTS_NUMBER_NOT_EQUAL,
+            {
+                '%number%': number,
+                '%page%': page,
+                '%element%': element
+            }
+        )} ${numberOfElements}`
+    );
+});
+
+Then('{int} {word} from {word}( page) should be present', async function (
+    number, element, page
+) {
+    const selector = await getData(page, element);
+    const numberOfElements = await $$(selector);
+
+    await expect(numberOfElements).toHaveLength(
+        number,
+        `${replaceMultipleSubstrings(
+            errors.ELEMENTS_NUMBER_NOT_EQUAL,
+            {
+                '%number%': number,
+                '%page%': page,
+                '%element%': element
+            }
+        )} ${numberOfElements}`
+    );
+});
 
 Then('{string}.{string} should not be present', async function (
     page, element
