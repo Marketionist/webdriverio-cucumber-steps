@@ -354,11 +354,17 @@ window/tab contains the text (provided in "" as a string).
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-38. `"..."."..." should not be present` - verify that element (provided in
+38. `... "..."."..." should be present` - verify that the number of elements
+(provided in **"page"."object"** as CSS or XPath selector) are present on the
+page (for example: `Then 4 "test2-page"."input" should be present`).
+- `... ... from ... should be present` - verify that the number of elements
+(provided in **object** from **page** as CSS or XPath selector) are present on
+the page (for example: `Then 4 input from test2-page should be present`).
+39. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-39. `"..."."..." text should be "..."` - verify that text of the element
+40. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -370,7 +376,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-40. `"..."."..." text should contain "..."` - verify that text of the element
+41. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element
@@ -382,7 +388,7 @@ the text (provided in **"page2"."object2"**).
 - `... from ... text should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS or XPath selector)
 contains the text (provided in **object2** from **page2**).
-41. `URL should contain "..."` - verify that URL of the current page contains
+42. `URL should contain "..."` - verify that URL of the current page contains
 the text (provided in "" as a string).
 - `URL should contain "..."."..."` - verify that URL of the current page
 contains the text (provided in **"page"."object"**).
