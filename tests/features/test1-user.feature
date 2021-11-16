@@ -26,6 +26,14 @@ Feature: Running Cucumber with TestCafe - test 'user ...' steps feature 1
     And user reloads the page
     Then linkTest2Page from test1-page should be present
 
+  Scenario: 'number should be present' should verify the number of elements
+    Given user goes to "test2-page"."pageTest2"
+    Then 4 "test2-page"."input" should be present
+
+  Scenario: 'number should be present' should verify the number of elements (text style step)
+    Given user goes to "test2-page"."pageTest2"
+    Then 4 input from test2-page should be present
+
   Scenario: 'should not be present': link on Page1 test page should not be present, 'user waits for' should wait for 200 ms
     Given user goes to "test1-page"."pageTest1"
     And user waits for 200 ms

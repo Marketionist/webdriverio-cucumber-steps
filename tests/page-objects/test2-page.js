@@ -17,6 +17,7 @@ let test2Page = {
     inputPassword: '//*[@id="input-password"]',
     buttonLogin: '#login',
     blockCredentials: '#block-credentials',
+    input: 'input',
     cookieTest: 'test2=true',
     bodyTest: '{"items":3,"item1":"nice","item2":true,"item3":[1,2,3]}',
     headersTest: '{"Content-Type":"application/json",' +
