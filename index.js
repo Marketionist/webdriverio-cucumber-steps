@@ -1241,7 +1241,7 @@ Then('URL should be {string}', async function (url) {
 });
 
 Then('URL should be {string}.{string}', async function (page, element) {
-    const url = await getElement(page, element);
+    const url = await getData(page, element);
 
     await expect(browser).toHaveUrl(url);
 });
@@ -1249,7 +1249,7 @@ Then('URL should be {string}.{string}', async function (page, element) {
 Then('URL should be {word} from {word}( page)', async function (
     element, page
 ) {
-    const url = await getElement(page, element);
+    const url = await getData(page, element);
 
     await expect(browser).toHaveUrl(url);
 });
