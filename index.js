@@ -1236,6 +1236,24 @@ Then(
     }
 );
 
+Then('URL should be {string}', async function (url) {
+    await expect(browser).toHaveUrl(url);
+});
+
+Then('URL should be {string}.{string}', async function (page, element) {
+    const url = await getData(page, element);
+
+    await expect(browser).toHaveUrl(url);
+});
+
+Then('URL should be {word} from {word}( page)', async function (
+    element, page
+) {
+    const url = await getData(page, element);
+
+    await expect(browser).toHaveUrl(url);
+});
+
 Then('URL should contain {string}', async function (url) {
     await expect(browser).toHaveUrlContaining(url);
 });

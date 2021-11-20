@@ -11,6 +11,8 @@ let test2Page = {
     blockDropdownColor: '#block-dropdown-color',
     inputColors: '#input-colors',
     blockInputColor: '#block-input-color',
+    urlTest1: 'http://localhost:8001/test1.html',
+    pathTest1: '/test1.html',
     loginTest2: 'testUser',
     passwordTest2: '1111',
     inputUsername: '#input-username',
