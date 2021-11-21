@@ -986,7 +986,7 @@ When(
     async function (url) {
         const window = await browser.createWindow('tab');
 
-        await browser.switchToWindow(window);
+        await browser.switchToWindow(window.handle);
         await browser.navigateTo(url);
     }
 );
@@ -997,7 +997,7 @@ When(
         const url = await getData(page, element);
         const window = await browser.createWindow('tab');
 
-        await browser.switchToWindow(window);
+        await browser.switchToWindow(window.handle);
         await browser.navigateTo(url);
     }
 );
@@ -1008,7 +1008,7 @@ When(
         const url = await getData(page, element);
         const window = await browser.createWindow('tab');
 
-        await browser.switchToWindow(window);
+        await browser.switchToWindow(window.handle);
         await browser.navigateTo(url);
     }
 );
