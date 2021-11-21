@@ -984,15 +984,10 @@ When('I/user dismiss(es) browser alert', async function () {
 When(
     'I/user open(s) {string} in new browser window',
     async function (url) {
-        await browser.newWindow(url);
+        const window = await browser.createWindow('tab');
 
-        const handles = await browser.getWindowHandles();
-
-        if (handles.length === 2) {
-            await browser.switchToWindow(handles[1]);
-        } else {
-            await browser.switchWindow(url);
-        }
+        await browser.switchToWindow(window.handle);
+        await browser.navigateTo(url);
     }
 );
 
@@ -1000,16 +995,10 @@ When(
     'I/user open(s) {string}.{string} in new browser window',
     async function (page, element) {
         const url = await getData(page, element);
+        const window = await browser.createWindow('tab');
 
-        await browser.newWindow(url);
-
-        const handles = await browser.getWindowHandles();
-
-        if (handles.length === 2) {
-            await browser.switchToWindow(handles[1]);
-        } else {
-            await browser.switchWindow(url);
-        }
+        await browser.switchToWindow(window.handle);
+        await browser.navigateTo(url);
     }
 );
 
@@ -1017,16 +1006,10 @@ When(
     'I/user open(s) {word} from {word}( page) in new browser window',
     async function (element, page) {
         const url = await getData(page, element);
+        const window = await browser.createWindow('tab');
 
-        await browser.newWindow(url);
-
-        const handles = await browser.getWindowHandles();
-
-        if (handles.length === 2) {
-            await browser.switchToWindow(handles[1]);
-        } else {
-            await browser.switchWindow(url);
-        }
+        await browser.switchToWindow(window.handle);
+        await browser.navigateTo(url);
     }
 );
 
