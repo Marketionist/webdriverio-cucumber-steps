@@ -1273,3 +1273,27 @@ Then('URL should contain {word} from {word}( page)', async function (
 
     await expect(browser).toHaveUrlContaining(url);
 });
+
+Then('{string}.{string} attribute {string} should contain {string}',
+    async function (page, element, attribute, attributeValue) {
+        const elem = await getElement(page, element);
+
+        await expect(elem).toHaveAttributeContaining(
+            attribute,
+            attributeValue,
+            `${errors.ATTRIBUTE_NOT_INCLUDES} "${page}"."${element}" -> "${attribute}" to include "${attributeValue}"`
+        );
+    }
+);
+
+Then('{word} from {word}( page) attribute {string} should contain {string}',
+    async function (element, page, attribute, attributeValue) {
+        const elem = await getElement(page, element);
+
+        await expect(elem).toHaveAttributeContaining(
+            attribute,
+            attributeValue,
+            `${errors.ATTRIBUTE_NOT_INCLUDES} "${page}"."${element}" -> "${attribute}" to include "${attributeValue}"`
+        );
+    }
+);
