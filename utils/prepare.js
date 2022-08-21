@@ -12,7 +12,7 @@ const pathToPageObjectsDir = path.join(pathToTestsDir, 'page-objects');
 const pathToTestExample = path.join(pathToTestsDir, 'test-example.feature');
 const testExampleContent = `@fast @example-tests
 
-Feature: Running Cucumber with TestCafe - test feature example
+Feature: Running Cucumber with WebdriverIO - test feature example
   As a user of Google
   I should be able to see the Products page
   to learn more about Google
@@ -34,7 +34,7 @@ let testPage = {
 
 };
 
-testPage.linkOurProducts = \`\${testPage.header} a[title="Our products"]\`;
+testPage.linkOurProducts = \`\${testPage.header} a[class*="link-products"]\`;
 
 module.exports = testPage;`;
 const pathToConfigExample = path.join(pathToTestsDir, 'wdio.conf.js');
