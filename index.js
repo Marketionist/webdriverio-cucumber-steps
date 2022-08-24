@@ -1280,3 +1280,7 @@ Then('{word} from {word}( page) attribute {string} should contain {string}',
         );
     }
 );
+
+module.exports = {
+    waitForElement: waitForElement
+};
