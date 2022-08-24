@@ -407,6 +407,16 @@ attribute (provided in "" as a string) of the element (provided in
 attribute (provided in "" as a string) of the element (provided in
 **"page"."object"**) contains provided string (provided in "" as a string).
 
+## Bonus feature: smart wait for element
+If you want to utilize some helper functions - for example smart waits, it can
+be imported and used in your custom step definitions like this:
+```javascript
+const { waitForElement } = require('webdriverio-cucumber-steps');
+
+const buttonTest = await $('.button-test');
+await waitForElement(buttonTest);
+```
+
 ## Contributing
 You are welcome to contribute to this repository - please see
 [CONTRIBUTING.md](https://github.com/Marketionist/webdriverio-cucumber-steps/blob/main/CONTRIBUTING.md)
